@@ -3,4 +3,6 @@ Flask
 mistune
 werkzeug
 gunicorn
+requests
 python-dotenv
+pylistenbrainz

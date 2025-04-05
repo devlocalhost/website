@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    what is dev listening to - dev64&#39;s website
+{% endblock %}
+
+{% block content %}
+
+    <div class="navigation-top">
+        <span><a href="/">← Home</a></span>
+        <span class="backbtn">i redlohecalP</span>
+    </div>
+
+    <h1 class="colored">What is dev listening to?</h1>
+
+    <p>He is listening to <code>{{ listen_data[0] }} by {{ listen_data[1] }}</code> since {{ listen_data[3] }} (might be inaccurate)</p>
+
+    <h2>Other</h2>
+
+    <p>Click <a href="https://trackard.dev64.xyz/get?username=dev64&service={{ listen_data[4] }}&track_title_artist=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">here</a> to generate an image for that song using <a href="https://trackard.dev64.xyz/">trackard</a>, or <a href="/placeholder">here</a> to see the lyrics for that song using <a href="https://pylyrical.dev64.xyz/">pylyrical</a>.</p>
+
+{% endblock %}

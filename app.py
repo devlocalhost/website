@@ -5,9 +5,11 @@ import pytz
 import hashlib
 import datetime
 import platform
+import requests
 import subprocess
 
 import mistune
+import pylistenbrainz
 
 from flask import Flask, render_template, redirect, request
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -37,6 +39,11 @@ START_TIME_TIMESTAMP_UTC = int(
 PLATFORM = f"{platform.uname()[1]} ({platform.uname()[2]})"
 
 NEWLINE_CHAR = "\n"
+
+PYLISTENBRAINZ_CLIENT = pylistenbrainz.ListenBrainz()
+
+LASTFM_API_BASE_URL = "https://ws.audioscrobbler.com/2.0"
+LASTFM_API_KEY = os.environ.get("LASTFM_API_KEY")
 
 
 class CustomRenderer(mistune.HTMLRenderer):
@@ -86,6 +93,46 @@ def get_uptime(seconds):
         result[-1] = "and " + result[-1]
 
     return ", ".join(result)
+
+
+def lastfm_listen(username):
+    resp = requests.get(
+        f"{LASTFM_API_BASE_URL}/?api_key={LASTFM_API_KEY}&method=User.getrecenttracks&user={username}&format=json&limit=1"
+    )
+    data = resp.json()
+
+    nowplaying = False
+    
+    if data["recenttracks"]["track"][0].get("@attr"):
+        nowplaying = True
+
+    artist = data["recenttracks"]["track"][0]["artist"]["#text"]
+    title = data["recenttracks"]["track"][0]["name"]
+    timestamp = datetime.datetime.fromtimestamp(int(data["recenttracks"]["track"][1]["date"]["uts"])).strftime(
+        "%A, %B %d %Y - %I:%M:%S %p"
+    )
+
+    return (title, artist, nowplaying, timestamp, "lastfm")
+
+
+def listenbrainz_listen(username):
+    temp_data = PYLISTENBRAINZ_CLIENT.get_playing_now(username=username)
+    
+    if temp_data:
+        data = temp_data
+        nowplaying = True
+
+    else:
+        data = PYLISTENBRAINZ_CLIENT.get_listens(username=username)[0]
+        nowplaying = False
+    
+    artist = data.artist_name
+    title = data.track_name
+    timestamp = datetime.datetime.fromtimestamp(data.listened_at).strftime(
+        "%A, %B %d %Y - %I:%M:%S %p"
+    )
+
+    return (title, artist, nowplaying, timestamp, "listenbrainz")
 
 
 def custom_header_plugin(md):
@@ -148,6 +195,25 @@ def status():
 @app.route("/")
 def home():
     return render_template("index.html")
+
+
+@app.route("/widlt")
+@app.route("/whatisdevlisteningto")
+def widlt():
+    username = "dev64"
+
+    listen_data = None
+    
+    lastfm_data = lastfm_listen(username)
+    listenbrainz_data = listenbrainz_listen(username)
+
+    if lastfm_data[2]:
+        listen_data = lastfm_data
+
+    else:
+        listen_data = listenbrainz_data
+    
+    return render_template("widlt.html", listen_data=listen_data)
 
 
 @app.route("/blog")
