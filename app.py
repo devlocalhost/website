@@ -1,4 +1,5 @@
 import os
+import re
 import hmac
 import pytz
 import hashlib
@@ -21,18 +22,18 @@ load_dotenv()
 
 app = Flask("-- website --")
 
-app.wsgi_app = ProxyFix(
-    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
-)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 
 APP_SECRET_TOKEN = os.environ["APP_SECRET_TOKEN"]
 COMMIT_HASH = subprocess.check_output(
     'git log -1 --pretty=format:"%h"', shell=True, text=True
 )
 COMMIT_MESSAGE = subprocess.check_output(
-    f'git log -1 --pretty=format:%s {COMMIT_HASH}', shell=True, text=True
+    f"git log -1 --pretty=format:%s {COMMIT_HASH}", shell=True, text=True
 )
-START_TIME_TIMESTAMP_UTC = int(datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC)))
+START_TIME_TIMESTAMP_UTC = int(
+    datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC))
+)
 PLATFORM = f"{platform.uname()[1]} ({platform.uname()[2]})"
 
 NEWLINE_CHAR = "\n"
@@ -43,10 +44,14 @@ class CustomRenderer(mistune.HTMLRenderer):
         header_id = re.sub(r"\s+", "-", text.lower())
         return f'<h{level}>{text}</h{level}><div id="{header_id}"></div>'
 
-if os.getenv("WEBSITE_MODE"):
-    print("[DEBUG] Templates will auto reload")
 
+if os.getenv("WEBSITE_MODE"):
+    print("[WEBSITE] DEBUG = True")
+    app.config["DEBUG"] = True
+
+    print("[WEBSITE] TEMPLATES_AUTO_RELOAD = True")
     app.config["TEMPLATES_AUTO_RELOAD"] = True
+
 
 def verify_signature(secret_token, signature_header, payload_body):
     if not signature_header:
@@ -59,10 +64,11 @@ def verify_signature(secret_token, signature_header, payload_body):
 
     return hmac.compare_digest(expected, signature_header)
 
+
 def get_uptime(seconds):
     intervals = (("week", 604800), ("day", 86400), ("hour", 3600), ("minute", 60))
     result = []
-    
+
     original_seconds = seconds
 
     if seconds < 60:
@@ -80,6 +86,7 @@ def get_uptime(seconds):
         result[-1] = "and " + result[-1]
 
     return ", ".join(result)
+
 
 def custom_header_plugin(md):
     md.renderer = CustomRenderer()
@@ -101,19 +108,42 @@ def autod():
     else:
         return "", 403
 
+
 @app.route("/s")
 def status():
-    TIME_NOW_TIMESTAMP = int(datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC)))
+    TIME_NOW_TIMESTAMP = int(
+        datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC))
+    )
     # TIME_NOW_TIMESTAMP = datetime.datetime.now(pytz.UTC).strftime("%A, %B %d %Y - %I:%M:%S %p %Z")
 
-    start_time = datetime.datetime.fromtimestamp(START_TIME_TIMESTAMP_UTC).strftime("%A, %B %d %Y - %I:%M:%S %p")
-    time_now = datetime.datetime.fromtimestamp(TIME_NOW_TIMESTAMP).strftime("%A, %B %d %Y - %I:%M:%S %p")
-    
+    start_time = datetime.datetime.fromtimestamp(START_TIME_TIMESTAMP_UTC).strftime(
+        "%A, %B %d %Y - %I:%M:%S %p"
+    )
+    time_now = datetime.datetime.fromtimestamp(TIME_NOW_TIMESTAMP).strftime(
+        "%A, %B %d %Y - %I:%M:%S %p"
+    )
+
     uptime = get_uptime(TIME_NOW_TIMESTAMP - START_TIME_TIMESTAMP_UTC)
 
-    nsysmon_plugins_data = [cpuinfo.Cpuinfo().get_data(), meminfo.Meminfo().get_data(), loadavg.Loadavg().get_data()]
-    
-    return render_template("status.html", data=[COMMIT_HASH, COMMIT_MESSAGE, PLATFORM, start_time, time_now, uptime, nsysmon_plugins_data])
+    nsysmon_plugins_data = [
+        cpuinfo.Cpuinfo().get_data(),
+        meminfo.Meminfo().get_data(),
+        loadavg.Loadavg().get_data(),
+    ]
+
+    return render_template(
+        "status.html",
+        data=[
+            COMMIT_HASH,
+            COMMIT_MESSAGE,
+            PLATFORM,
+            start_time,
+            time_now,
+            uptime,
+            nsysmon_plugins_data,
+        ],
+    )
+
 
 @app.route("/")
 def home():
@@ -127,9 +157,9 @@ def blog():
     for file in os.listdir("blogs"):
         if file.endswith(".md"):
             with open(f"blogs/{file}", encoding="utf-8") as blog_file:
-                blogs[blog_file.readline().replace("# ", "").replace(NEWLINE_CHAR, "")] = (
-                    file.removesuffix(".md")
-                )
+                blogs[
+                    blog_file.readline().replace("# ", "").replace(NEWLINE_CHAR, "")
+                ] = file.removesuffix(".md")
 
     return render_template("blogs.html", blogs=blogs)
 
@@ -145,10 +175,30 @@ def blog_post(blog_name):
         blog_title = file.readline().removeprefix("# ").removesuffix(NEWLINE_CHAR)
         blog_data = markdown_parser(file.read())
 
-    date_created = subprocess.check_output(f"TZ=UTC git log --follow --format=%ad --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' {blog_file} | tail -1", shell=True, text=True)
-    date_last_modified = subprocess.check_output(f"TZ=UTC git log -1 --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' --format=%ad {blog_file}", shell=True, text=True)
+    date_created = (
+        subprocess.check_output(
+            f"TZ=UTC git log --follow --format=%ad --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' {blog_file} | tail -1",
+            shell=True,
+            text=True,
+        )
+        or "Unknown"
+    )
+    date_last_modified = (
+        subprocess.check_output(
+            f"TZ=UTC git log -1 --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' --format=%ad {blog_file}",
+            shell=True,
+            text=True,
+        )
+        or "Unknown"
+    )
 
-    return render_template("blog_template.html", blog_title=blog_title, blog_data=blog_data, date_created=date_created, date_last_modified=date_last_modified)
+    return render_template(
+        "blog_template.html",
+        blog_title=blog_title,
+        blog_data=blog_data,
+        date_created=date_created,
+        date_last_modified=date_last_modified,
+    )
 
 
 @app.errorhandler(404)
