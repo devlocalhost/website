@@ -1,5 +1,6 @@
-Flask
-werkzeug
-python-dotenv
 pytz
+Flask
+mistune
+werkzeug
 gunicorn
+python-dotenv
