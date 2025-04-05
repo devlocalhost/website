@@ -5,7 +5,7 @@
     --text-color: #EEEEEE;
     --ul-ol-background-color: #393E46;
     --img-border-color: #343434;
-    --hr-color: #434343;
+    --hr-color: var(--lists-background);
     --lists-background: #555D69;
     /* --navbar-a-active: #575064; */
     /* --navbar-a-hover: #6d647d; */
