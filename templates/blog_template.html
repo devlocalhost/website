@@ -4,6 +4,19 @@
     blog post: {{ blog_title }} - dev64&#39;s website
 {% endblock %}
 
+{% block head %}
+{{ super() }}
+
+<style type="text/css">
+    .blog_details {
+        font-style: italic;
+        text-align: center;
+        color: #d4d4d4;
+    }
+</style>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="navigation-top">
@@ -17,6 +30,6 @@
 
     <hr>
 
-    <p>Creation date: {{ date_created }} | Last modified date: {{ date_last_modified }}</p>
+    <span class="blog_details"><p>Blog post created at: {{ date_created }}<br>And last modified at: {{ date_last_modified }}</p></span>
     
 {% endblock %}
