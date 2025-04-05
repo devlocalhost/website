@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    blogs - dev64&#39;s website
+{% endblock %}
+
+{% block content %}
+
+    <div class="navigation-top">
+        <span><a href="/">← Home</a></span>
+        <span class="backbtn">i redlohecalP</span>
+    </div>
+    
+    <h1 class="colored" onclick="toggleStylesheet()">Blogs</h1>
+
+    <p>On this route, you will find my "blog" posts. "blog" in quotes because this route wont (really) contain blog posts only, it could (or will?) contain other stuff too.</p>
+
+    <h2>Posts</h2>
+    <ul>
+        {% for blog in blogs.items() %}
+            <li><a href="/blog/{{ blog[1] }}">{{ blog[0] }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
