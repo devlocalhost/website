@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    status - dev64&#39;s website
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="colored">Status</h1>
+
+    <h2>Debugging</h2>
+    <ul>
+        <li>Commit: <code>{{ data[0] }}</code> <a href="https://github.com/devlocalhost/website/commit/{{ data[0] }}">{{ data[1] }}</a></li>
+        <li>Platform: <code>{{ data[2] }}</code></li>
+    </ul>
+
+    <h2>Uptime</h2>
+    <p>Note: Times are in <a href="https://en.wikipedia.org/wiki/UTC%2B00:00">UTC+00:00</a> timezone</p>
+
+    <ul>
+        <li>Uptime: <code>{{ data[5] }}</code></li>
+        <li>Up since: <code>{{ data[3] }}</code></li>
+        <li>Time now: <code>{{ data[4] }}</code></li>
+    </ul>
+
+    <h2>nSysmon</h2>
+    <ul>
+        <li>CPU Usage: {{ data[6][0]["usage"] }}%</li>
+        <li>Memory usage:</li>
+        
+        <ul>
+            <li>Used: {{ data[6][1]["physical"]["percentage"]["used"] }}%</li>
+            <li>Available: {{ data[6][1]["physical"]["percentage"]["available"] }}%</li>
+        </ul>
+        
+        <li>Load times: {{ data[6][2]["load_times"]["1"] }}, {{ data[6][2]["load_times"]["5"] }}, {{ data[6][2]["load_times"]["15"] }}</li>
+    </ul>
+
+{% endblock %}
