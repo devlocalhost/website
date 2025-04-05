@@ -177,7 +177,7 @@ def blog_post(blog_name):
 
     date_created = (
         subprocess.check_output(
-            f"TZ=UTC git log --follow --format=%ad --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' {blog_file} | tail -1",
+            f"TZ=UTC git log --follow --format=%ad --date=format-local:'%A, %B %d %Y - %I:%M:%S %p %Z' {blog_file} | tail -1",
             shell=True,
             text=True,
         )
@@ -185,7 +185,7 @@ def blog_post(blog_name):
     )
     date_last_modified = (
         subprocess.check_output(
-            f"TZ=UTC git log -1 --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' --format=%ad {blog_file}",
+            f"TZ=UTC git log -1 --date=format-local:'%A, %B %d %Y - %I:%M:%S %p %Z' --format=%ad {blog_file}",
             shell=True,
             text=True,
         )
