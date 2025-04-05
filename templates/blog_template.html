@@ -14,5 +14,9 @@
     <h1 class="colored" onclick="toggleStylesheet()">{{ blog_title }}</h1>
 
     {{ blog_data | safe }}
+
+    <hr>
+
+    <p>Creation date: {{ date_created }} | Last modified date: {{ date_last_modified }}</p>
     
 {% endblock %}

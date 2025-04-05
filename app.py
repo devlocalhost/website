@@ -145,7 +145,10 @@ def blog_post(blog_name):
         blog_title = file.readline().removeprefix("# ").removesuffix(NEWLINE_CHAR)
         blog_data = markdown_parser(file.read())
 
-    return render_template("blog_template.html", blog_title=blog_title, blog_data=blog_data)
+    date_created = subprocess.check_output(f"TZ=UTC git log --follow --format=%ad --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' {blog_file} | tail -1", shell=True, text=True)
+    date_last_modified = subprocess.check_output(f"TZ=UTC git log -1 --date=format:'%A, %B %d %Y - %I:%M:%S %p %Z' --format=%ad {blog_file}", shell=True, text=True)
+
+    return render_template("blog_template.html", blog_title=blog_title, blog_data=blog_data, date_created=date_created, date_last_modified=date_last_modified)
 
 
 @app.errorhandler(404)
