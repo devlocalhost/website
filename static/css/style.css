@@ -1,12 +1,12 @@
 :root {
-    --accent-color: #4a90d9;
-    --links-color: #99c1f1;
-    --background-color: #191919;
-    --text-color: #e5e5e5;
-    --ul-ol-background-color: #252525;
+    --accent-color: #00ADB5;
+    --links-color: #EEEEEE;
+    --background-color: #222831;
+    --text-color: #EEEEEE;
+    --ul-ol-background-color: #393E46;
     --img-border-color: #343434;
     --hr-color: #434343;
-    --lists-background: #343434;
+    --lists-background: #555D69;
     /* --navbar-a-active: #575064; */
     /* --navbar-a-hover: #6d647d; */
     --navbar-background-color: #212121;
