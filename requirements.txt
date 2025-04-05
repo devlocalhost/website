@@ -1,5 +1,5 @@
 Flask
-requests
 werkzeug
 python-dotenv
 pytz
+gunicorn
