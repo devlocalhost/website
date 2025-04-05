@@ -6,6 +6,8 @@ import datetime
 import platform
 import subprocess
 
+import mistune
+
 from flask import Flask, render_template, redirect, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -32,6 +34,14 @@ COMMIT_MESSAGE = subprocess.check_output(
 )
 START_TIME_TIMESTAMP_UTC = int(datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC)))
 PLATFORM = f"{platform.uname()[1]} ({platform.uname()[2]})"
+
+NEWLINE_CHAR = "\n"
+
+
+class CustomRenderer(mistune.HTMLRenderer):
+    def heading(self, text, level):
+        header_id = re.sub(r"\s+", "-", text.lower())
+        return f'<h{level}>{text}</h{level}><div id="{header_id}"></div>'
 
 if os.getenv("WEBSITE_MODE"):
     print("[DEBUG] Templates will auto reload")
@@ -71,6 +81,13 @@ def get_uptime(seconds):
 
     return ", ".join(result)
 
+def custom_header_plugin(md):
+    md.renderer = CustomRenderer()
+
+
+markdown_parser = mistune.create_markdown(plugins=[custom_header_plugin])
+
+
 @app.route("/autod", methods=["POST"])
 def autod():
     signature = request.headers.get("X-Hub-Signature-256")
@@ -101,3 +118,36 @@ def status():
 @app.route("/")
 def home():
     return render_template("index.html")
+
+
+@app.route("/blog")
+def blog():
+    blogs = {}
+
+    for file in os.listdir("blogs"):
+        if file.endswith(".md"):
+            with open(f"blogs/{file}", encoding="utf-8") as blog_file:
+                blogs[blog_file.readline().replace("# ", "").replace(NEWLINE_CHAR, "")] = (
+                    file.removesuffix(".md")
+                )
+
+    return render_template("blogs.html", blogs=blogs)
+
+
+@app.route("/blog/<blog_name>")
+def blog_post(blog_name):
+    blog_file = os.path.join("blogs", blog_name + ".md")
+
+    if not os.path.exists(blog_file):
+        return render_template("404.html")
+
+    with open(blog_file, encoding="utf-8") as file:
+        blog_title = file.readline().removeprefix("# ").removesuffix(NEWLINE_CHAR)
+        blog_data = markdown_parser(file.read())
+
+    return render_template("blog_template.html", blog_title=blog_title, blog_data=blog_data)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
