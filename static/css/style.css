@@ -10,7 +10,6 @@
     /* --navbar-a-active: #575064; */
     /* --navbar-a-hover: #6d647d; */
     --navbar-background-color: #212121;
-    --back-btn-color: var(--links-color);
     --code-background: #000;
     --code-hover: #99c1f1;
     --outline-color: #343434;
@@ -28,6 +27,11 @@
     src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@2.304/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
+}
+
+html {
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
 }
 
 body {
@@ -76,6 +80,9 @@ h6 {
 a {
     cursor: pointer;
     color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    text-decoration-thickness: 2px;
 }
 
 a:hover {
