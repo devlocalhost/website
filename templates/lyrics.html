@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    lyrics - dev64&#39;s website
+{% endblock %}
+
+{% block content %}
+
+    <div class="navigation-top">
+        <span><a href="/">← Home</a></span>
+        <span class="backbtn">i redlohecalP</span>
+    </div>
+
+    <h1 class="colored">Lyrics (by genius.com)</h1>
+
+    <form action="/lyrics" method="get">
+        <label for="search_query">Search for...</label>
+        <br>
+        <input type="text" id="search_query" name="search_query" placeholder="The Weeknd How Do I Make You Love Me?" required="">
+        <button type="submit">Search</button>
+    </form>
+
+{% endblock %}

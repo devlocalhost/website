@@ -7,6 +7,7 @@ import datetime
 import platform
 import requests
 import subprocess
+import urllib.parse
 
 import mistune
 import pylistenbrainz
@@ -265,6 +266,18 @@ def blog_post(blog_name):
         date_created=date_created,
         date_last_modified=date_last_modified,
     )
+
+
+@app.route("/lyrics")
+def lyrics():
+    search_query = request.args.get("search_query")
+
+    if search_query:
+        data = requests.get(f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}").text
+
+        return render_template("lyrics_result.html", data=data)
+        
+    return render_template("lyrics.html")
 
 
 @app.errorhandler(404)
