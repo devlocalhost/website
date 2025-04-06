@@ -109,9 +109,16 @@ def lastfm_listen(username):
 
     artist = data["recenttracks"]["track"][0]["artist"]["#text"]
     title = data["recenttracks"]["track"][0]["name"]
-    timestamp = datetime.datetime.fromtimestamp(int(data["recenttracks"]["track"][1]["date"]["uts"])).strftime(
-        "%A, %B %d %Y - %I:%M:%S %p"
-    )
+    
+    try:
+        timestamp = datetime.datetime.fromtimestamp(int(data["recenttracks"]["track"][0]["date"]["uts"])).strftime(
+            "%A, %B %d %Y - %I:%M:%S %p"
+        )
+
+    except KeyError:
+        timestamp = datetime.datetime.fromtimestamp(int(data["recenttracks"]["track"][1]["date"]["uts"])).strftime(
+            "%A, %B %d %Y - %I:%M:%S %p"
+        )
 
     return (title, artist, nowplaying, timestamp, "lastfm")
 
@@ -204,17 +211,20 @@ def widlt():
     username = "dev64"
 
     listen_data = None
+    service = None
     
     lastfm_data = lastfm_listen(username)
     listenbrainz_data = listenbrainz_listen(username)
 
     if lastfm_data[2]:
+        service = "Last.fm"
         listen_data = lastfm_data
 
     else:
+        service = "ListenBrainz"
         listen_data = listenbrainz_data
     
-    return render_template("widlt.html", listen_data=listen_data)
+    return render_template("widlt.html", listen_data=listen_data, service=service)
 
 
 @app.route("/blog")

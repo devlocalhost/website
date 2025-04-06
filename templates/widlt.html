@@ -13,7 +13,7 @@
 
     <h1 class="colored">What is dev listening to?</h1>
 
-    <p>He is listening to <code>{{ listen_data[0] }} by {{ listen_data[1] }}</code> since {{ listen_data[3] }} (might be inaccurate)</p>
+    <p>He {{ "is" if listen_data[2] else "was" }} listening to <code>{{ listen_data[0] }} by {{ listen_data[1] }}</code> {{ "since" if listen_data[2] else "at" }} {{ listen_data[3] }} (might be inaccurate). Service: {{ ('<a href="https://www.last.fm/user/dev64">Last.fm</a>' if service == "Last.fm" else ('<a href="https://listenbrainz.org/user/dev64/">ListenBrainz</a>' if service == "ListenBrainz" else 'Unknown')) | safe }}</p>
 
     <h2>Other</h2>
 
