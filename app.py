@@ -149,6 +149,7 @@ def custom_header_plugin(md):
 
 markdown_parser = mistune.create_markdown(plugins=[custom_header_plugin])
 
+app.jinja_env.globals.update(get_uptime=get_uptime)
 
 @app.route("/autod", methods=["POST"])
 def autod():
