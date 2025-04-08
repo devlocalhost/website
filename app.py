@@ -103,13 +103,13 @@ def lastfm_listen(username):
     data = resp.json()
 
     nowplaying = False
-    
+
     if data["recenttracks"]["track"][0].get("@attr"):
         nowplaying = True
 
     artist = data["recenttracks"]["track"][0]["artist"]["#text"]
     title = data["recenttracks"]["track"][0]["name"]
-    
+
     try:
         timestamp = datetime.datetime.fromtimestamp(int(data["recenttracks"]["track"][0]["date"]["uts"])).strftime(
             "%A, %B %d %Y - %I:%M:%S %p"
@@ -125,7 +125,7 @@ def lastfm_listen(username):
 
 def listenbrainz_listen(username):
     temp_data = PYLISTENBRAINZ_CLIENT.get_playing_now(username=username)
-    
+
     if temp_data:
         data = temp_data
         nowplaying = True
@@ -133,12 +133,17 @@ def listenbrainz_listen(username):
     else:
         data = PYLISTENBRAINZ_CLIENT.get_listens(username=username)[0]
         nowplaying = False
-    
+
     artist = data.artist_name
     title = data.track_name
-    timestamp = datetime.datetime.fromtimestamp(data.listened_at).strftime(
-        "%A, %B %d %Y - %I:%M:%S %p"
-    )
+
+    try:
+        timestamp = datetime.datetime.fromtimestamp(data.listened_at).strftime(
+            "%A, %B %d %Y - %I:%M:%S %p"
+        )
+
+    except:
+        timestamp = "Unknown"
 
     return (title, artist, nowplaying, timestamp, "listenbrainz")
 
@@ -213,7 +218,7 @@ def widlt():
 
     listen_data = None
     service = None
-    
+
     lastfm_data = lastfm_listen(username)
     listenbrainz_data = listenbrainz_listen(username)
 
@@ -224,7 +229,7 @@ def widlt():
     else:
         service = "ListenBrainz"
         listen_data = listenbrainz_data
-    
+
     return render_template("widlt.html", listen_data=listen_data, service=service)
 
 
@@ -287,7 +292,7 @@ def lyrics():
         data = requests.get(f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}").text
 
         return render_template("lyrics_result.html", data=data)
-        
+
     return render_template("lyrics.html")
 
 
