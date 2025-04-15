@@ -289,7 +289,7 @@ def lyrics():
     search_query = request.args.get("search_query")
 
     if search_query:
-        data = requests.get(f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}").text
+        data = requests.get(f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}").json()
 
         return render_template("lyrics_result.html", data=data)
 

@@ -11,12 +11,16 @@
         <span class="backbtn">i redlohecalP</span>
     </div>
 
-    <h1 class="colored">Lyrics (by genius.com)</h1>
+    <h1 class="colored">Lyrics - PyLyrical</h1>
 
+    <p>Lyrics using <a href="https://pylyrical.dev64.xyz">pylyrical</a>. A "wrapper", you could say, for <a href="https://genius.com" target="_blank">genius.com</a>, but better. No ads, no annoying pop ups. Just the lyrics.</p>
+
+    <h2>Get lyrics</h2>
     <form action="/lyrics" method="get">
-        <label for="search_query">Search for...</label>
-        <br>
-        <input type="text" id="search_query" name="search_query" placeholder="The Weeknd How Do I Make You Love Me?" required="">
+        <label for="search_query">Enter song title</label>
+        
+        <input type="search" id="search_query" name="search_query" placeholder="The Weeknd How Do I Make You Love Me?" required="">
+        
         <button type="submit">Search</button>
     </form>
 
