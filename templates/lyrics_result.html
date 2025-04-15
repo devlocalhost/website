@@ -11,8 +11,9 @@
         <span class="backbtn">i redlohecalP</span>
     </div>
 
-    <h1 class="colored">Results</h1>
+    <h1 class="colored">{{ data["title"] }} by {{ data["artists"] }}</h1>
+    <p>Source: <a href="{{ data['source'] }}">genius.com</a>. Generate an image using trackard by clicking <a href="https://trackard.dev64.xyz/get?username=&service=&track_title_artist={{ data['title'].replace(' ', '+') }}{{ data['artists'].replace(' ', '+') }}&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">here</a>.</p>
 
-    <code>{{ data }}</code>
+    <code>{{ data["lyrics"] }}</code>
 
 {% endblock %}
