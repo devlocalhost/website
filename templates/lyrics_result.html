@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{ super() }}
+
+<style>
+    body {
+        background: url('{{ data["cover_image"] }}') no-repeat center center fixed;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.8);
+        background-blend-mode: darken;
+    }
+</style>
+
+{% endblock %}
+
 {% block title %}
     lyrics - dev64&#39;s website
 {% endblock %}
@@ -12,8 +26,10 @@
     </div>
 
     <h1 class="colored">{{ data["title"] }} by {{ data["artists"] }}</h1>
-    <p>Source: <a href="{{ data['source'] }}">genius.com</a>. Generate an image using trackard by clicking <a href="https://trackard.dev64.xyz/get?username=&service=&track_title_artist={{ data['title'].replace(' ', '+') }}{{ data['artists'].replace(' ', '+') }}&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">here</a>.</p>
-
+    <p>Lyrics and image source: <a href="{{ data['source'] }}">genius.com</a>. Generate an image using trackard by clicking <a href="https://trackard.dev64.xyz/get?username=&service=&track_title_artist={{ data['title'].replace(' ', '+') }}{{ data['artists'].replace(' ', '+') }}&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">here</a>.</p>
+    </div>
+    
+    <h2>Lyrics</h2>
     <code>{{ data["lyrics"] }}</code>
 
 {% endblock %}
