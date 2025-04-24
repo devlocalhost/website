@@ -159,6 +159,7 @@ code {
     padding: 0 8px;
     border-radius: 5px;
     font-family: 'JetBrains Mono', monospace, sans-serif;
+    font-size: 0.95em;
     font-weight: bold;
     display: inline-block;
     word-break: break-word;
