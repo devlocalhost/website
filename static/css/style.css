@@ -158,8 +158,8 @@ code {
     background-color: var(--code-background);
     padding: 0 8px;
     border-radius: 5px;
+    font-family: 'JetBrains Mono', monospace, sans-serif;
     font-weight: bold;
-    font-size: 1.2em;
     display: inline-block;
     word-break: break-word;
     white-space: pre-wrap;
