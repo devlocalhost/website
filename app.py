@@ -152,7 +152,7 @@ def custom_header_plugin(md):
     md.renderer = CustomRenderer()
 
 
-markdown_parser = mistune.create_markdown(plugins=[custom_header_plugin])
+markdown_parser = mistune.create_markdown(plugins=[custom_header_plugin, 'strikethrough'])
 
 app.jinja_env.globals.update(get_uptime=get_uptime)
 
