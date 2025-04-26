@@ -15,6 +15,7 @@
 
     <h2>Debugging</h2>
     <ul>
+        <li>URL Root: {{ request.url_root }}</li>
         <li>Commit: <code>{{ data[0] }}</code> <a href="https://github.com/devlocalhost/website/commit/{{ data[0] }}">{{ data[1] }}</a></li>
         <li>Platform: <code>{{ data[2] }}</code></li>
         <li>Website uptime: {{ data[5] }}</li>
