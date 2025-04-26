@@ -4,6 +4,7 @@ I have made a lost of projects since 2021 (?), but only a few (and the best, I'd
 ## List
 - [sysmon](https://github.com/devlocalhost/sysmon/): a SYStem MONitor for Linux, made in python.
 - [laurel_updates](https://laurel-updates.dev64.xyz/): a website for custom ROMs, kernels, and more for my xiaomi device.
+- [shl](https://shl.dev64.xyz/r/shl): a easy to use, minimal, and fast url shortener. no bullshitting, no trackers, no ads, no javascript.
 - [trackard](https://trackard.dev64.xyz/): a apple music-like card (image) generator.
 - [pyspodl](https://github.com/devlocalhost/pyspodl): a legit spotify downloader.
 - [pylyrical_api](https://pylyrical.dev64.xyz/): a [genius.com](https://genius.com) scraper. 
