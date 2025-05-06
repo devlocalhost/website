@@ -13,14 +13,14 @@
 
     <h1 class="colored">Status</h1>
 
-    <h2>Debugging</h2>
+    <h2>Debug</h2>
     <ul>
         <li>Commit: <code>{{ data[0] }}</code> <a href="https://github.com/devlocalhost/website/commit/{{ data[0] }}">{{ data[1] }}</a></li>
         <li>Platform: <code>{{ data[2] }}</code></li>
         <li>Website uptime: {{ data[5] }}</li>
     </ul>
 
-    <h2>nSysmon - Platform stats</h2>
+    <h2>Host stats</h2>
     <ul>
         <li>Uptime: {{ get_uptime(data[6][2]["uptime"]["seconds"]) }}</li>
 
@@ -36,7 +36,7 @@
             <li>Free: {{ data[6][1]["virtual"]["percentage"]["free"] }}%</li>
         </ul>
 
-        
+
         <li>Load times: {{ data[6][2]["load_times"]["1"] }}, {{ data[6][2]["load_times"]["5"] }}, {{ data[6][2]["load_times"]["15"] }}</li>
     </ul>
 
