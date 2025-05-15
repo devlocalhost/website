@@ -211,6 +211,12 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/testpage")
+@app.route("/t")
+def testpage():
+    return render_template("testpage.html")
+
+
 @app.route("/widlt")
 @app.route("/whatisdevlisteningto")
 def widlt():

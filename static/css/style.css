@@ -1,203 +1,139 @@
 :root {
-    --accent-color: #00ADB5;
-    --links-color: #EEEEEE;
-    --background-color: #222831;
-    --text-color: #EEEEEE;
-    --ul-ol-background-color: #393E46;
-    --img-border-color: #343434;
-    --hr-color: var(--lists-background);
-    --lists-background: #555D69;
-    /* --navbar-a-active: #575064; */
-    /* --navbar-a-hover: #6d647d; */
-    --navbar-background-color: #212121;
-    --code-background: #000;
-    --code-hover: #99c1f1;
-    --outline-color: #343434;
+    --accent-color: #0090FF;
+    --body-background-color: #000000;
+    --body-secondary-color: #0A0A0A;
+    --primary-text-color: #EDEDED;
+    --secondary-text-color: #A1A1A1;
+    --border-outline-color: #454545;
+    --element-hover-background-color: #171717;
+    --button-background-color: #EDEDED;
+    --button-text-color: #0A0A0A;
 }
 
-@font-face {
-    font-family: 'JetBrains Mono';
-    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@2.304/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+/* inter font */
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
 }
 
-@font-face {
-    font-family: 'JetBrains Mono';
-    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono@2.304/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
+@supports (font-variation-settings: normal) {
+    :root { font-family: InterVariable, sans-serif; }
 }
-
-html {
-    overflow-x: hidden;
-    margin-right: calc(-1 * (100vw - 100%));
-}
+/* inter font */
 
 body {
-    color: var(--text-color);
-    background-color: var(--background-color);
+    font-size: 18px;
+    color: var(--secondary-text-color);
+    background-color: var(--body-background-color);
     margin: 1em auto;
     max-width: 40em;
-    font-family: 'JetBrains Mono', monospace, sans-serif;
     line-height: 1.62;
     padding: 0 0.92em 3.64em;
     overflow-wrap: break-word;
 }
 
-input {
-    width: 100%;
-    height: 32px;
-    padding: 8px;
+hr {
+    margin: 3em 0;
+    border: 1px var(--border-outline-color) solid;
 }
 
-input[type=search] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: var(--lists-background);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'JetBrains Mono', monospace, sans-serif;
-    width: 100%;
-}
-
-h1, h2, h3, h4, h5 {
-    color: #e1e1e1;
+h1, h2, h3, h4, h5, h6 {
+    /* margin-top: 2em; */
+    color: var(--primary-text-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-h1 {
-    font-size: 2em;
-}
-
-h2 {
-    font-size: 1.6em;
-}
-
-h3 {
-    font-size: 1.4em;
-}
-
-h4 {
-    font-size: 1.2em;
-}
-
-h5 {
-    font-size: 1.15em;
-}
-
-h6 {
-    font-size: 1.10em;
-}
-
-a {
-    cursor: pointer;
-    color: var(--text-color);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    text-decoration-thickness: 2px;
-}
-
-a:hover {
-    font-weight: bold;
-}
-
-a {
+code,
+.code-block {
+    background-color: var(--body-secondary-color);
+    border: 1px var(--border-outline-color) solid;
+    font-family: 'JetBrains Mono', monospace;
     word-break: break-word;
-}
-
-hr {
-    border: none;
-    height: 4px;
-    border-radius: 5px;
-    background-color: var(--hr-color);
-}
-
-ul, ol, p, .navigation-top {
-    background: var(--ul-ol-background-color);
-    padding: 10px 10px 10px 20px;
-    list-style-position: inside;
-    border-radius: 15px;
-}
-
-p {
-    padding-left: 17px;
-}
-
-ul {
-    list-style-type: disc;
-}
-
-ol ol, ul ul, ol ul, ol p, ul p, li ul {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: var(--lists-background);
-}
-
-img {
-    display: block;
-    margin: 0 auto;
-    width: 97%;
-    border-radius: 15px;
-    border: 4px solid var(--img-border-color);
+    white-space: pre-wrap;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 code {
-    background-color: var(--code-background);
-    padding: 0 8px;
-    border-radius: 5px;
-    font-family: 'JetBrains Mono', monospace, sans-serif;
-    font-size: 0.95em;
-    font-weight: bold;
+    padding: 0 6px;
+    border-radius: 8px;
     display: inline-block;
-    word-break: break-word;
-    white-space: pre-wrap;
 }
 
-.navigation-top {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 15px;
-    padding-right: 15px;
+.code-block {
+    padding: 1em;
+    border-radius: 12px;
+    display: inline-block;
 }
 
-.navigation-top span {
-    margin: 0;
-    font-weight: bold;
-    font-size: 1.2em;
+code:hover {
+    background-color: var(--element-hover-background-color);
 }
 
-.navigation-top span a {
-    text-decoration: none;
+a {
+    color: var(--secondary-text-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+    word-break: break-word; /* possibly a bad choice? */
 }
 
-.navigation-top span::first-letter {
-    color: var(--accent-color);
+a:hover {
+    color: var(--primary-text-color);
 }
 
-.backbtn:hover {
+li::marker {
+    color: var(--primary-text-color);
+}
+
+button {
+    font-size: 18px;
+    padding: 12px;
+    border: 1px solid var(--border-outline-color);
+    border-radius: 8px;
+    background: var(--button-background-color);
+    color: var(--button-text-color);
+    transition: transform 0.3s ease;
     cursor: pointer;
 }
 
-.backbtn {
-    unicode-bidi: bidi-override;
-    direction: rtl;
+button:hover {
+    transform: translateY(-4px);
 }
 
-.backbtn::first-letter {
-    color: var(--accent-color);
+.input-wrapper {
+    border: 1px solid var(--border-outline-color);
+    border-radius: 12px;
+    padding: 20px;
+    background-color: var(--body-secondary-color);
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.2em;
+}
+
+.input-wrapper label {
+    color: var(--secondary-text-color);
+    font-size: 1em;
+}
+
+.input-wrapper input {
+    border: 1px solid var(--border-outline-color);
+    border-radius: 8px;
+    background: var(--body-secondary-color);
+    /* color: var(--primary-text-color); */
+    padding: 0.6em 0.8em;
+    outline: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    background-color: var(--element-hover-background-color);
+}
+
+.input-wrapper button {
+    margin-top: 20px;
 }
 
 .colored::first-letter {
