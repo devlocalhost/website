@@ -139,3 +139,7 @@ button:hover {
 .colored::first-letter {
     color: var(--accent-color);
 }
+
+.current-endpoint {
+    color: var(--primary-text-color);
+}

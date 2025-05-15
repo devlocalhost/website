@@ -19,9 +19,8 @@
 
 {% block content %}
 
-    <div class="navigation-top">
-        <span><a href="/blog">← Blogs</a></span>
-        <span class="backbtn" onclick="history.back()">→ kcaB</span>
+    <div class="navigation">
+        <p><a href="/">Home</a> &gt; <a href="/blog">Blogs</a> &gt; <a href="{{ request.endpoint }}" class="current-endpoint">Blog post</a></p>
     </div>
 
     <h1 class="colored" onclick="toggleStylesheet()">{{ blog_title }}</h1>
