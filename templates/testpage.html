@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}
+    testpage - dev64&#39;s website
+{% endblock %}
+
+{% block content %}
+
+    <h1>The test page</h1>
+    <p>In this page, you will (should?) find most elements used around the website. P (paragraph) tags, anchor (links) tags, code blocks, headers, etc. Very helpful for me to test and improve the UI of the website. Have fun i guess.</p>
+
+    <hr>
+
+    <h2>Headers</h2>
+    <h1>h1</h1>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>
+
+    <h2>Text/p tags</h2>
+    <p>The circle is drawn. All we need is your name, spoken thrice under a new moon. You are nearly ready. Do you feel it too? We dreamed of you again. This time you answered. The others were afraid, but we knew you'd come. You always come. I lit the last candle just before you messaged. The wax still remembers your face.</p>
+    
+    <p>The silence afterward was... expectant. He walks backwards through the wheat field, whispering the names of those who never slept. One more and the gate opens. You spilled salt again, didn’t you? They don’t like that. They’ll come in threes tonight. Don't answer the knocking. Your shadow moves faster than you do. That's how we knew. When it detaches, follow it. Don’t look behind you. The eyes blinked for the first time since you last spoke. We fed them the feathers like before. They see you now. Perfectly.</p>
+    
+    <h2>Codeblocks and preformatted text</h2>
+
+    <h3>Code block:</h3>
+    <code class="code-block">The silence afterward was... expectant. He walks backwards through the wheat field, whispering the names of those who never slept. One more and the gate opens. You spilled salt again, didn’t you? They don’t like that. They’ll come in threes tonight. Don't answer the knocking. Your shadow moves faster than you do. That's how we knew. When it detaches, follow it. Don’t look behind you. The eyes blinked for the first time since you last spoke. We fed them the feathers like before. They see you now. Perfectly.</code>
+
+    <h2>P block mixed with a pre:</h2>
+    <p>The circle is drawn. All we need is your name, spoken thrice under a new moon. You are nearly ready. <code>Do you feel it too?</code></p>
+
+    <h2>Anchor tags</h2>
+    <p>I can't do well when I think you're gonna leave me, But I know I try... <a href="https://www.youtube.com/watch?v=hN5X4kGhAtU">Are you gonna leave me now?</a> Can't you be believin' now?</p>
+
+    <h2>Lists</h2>
+    <p>All kind of lists, numbered, unordered, nested.</p>
+
+    <p>Mixed:</p>
+    <ol>
+        <li>First item</li>
+        <li>Second item
+            <ul>
+                <li>Sub-item A</li>
+                <li>Sub-item B</li>
+            </ul>
+        </li>
+        <li>Third item
+            <ol>
+                <li>Sub-step 1</li>
+                <li>Sub-step 2
+                    <ul>
+                        <li>Detail a</li>
+                        <li>Detail b</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+    </ol>
+
+    <p>Ordered:</p>
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+
+    <p>Unordered:</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <p>Ordered and unordered:</p>
+    <ol>
+        <li>Item 1
+            <ul>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+
+    <p>Unordered and ordered:</p>
+    <ul>
+        <li>Item 1
+            <ol>
+                <li>Item a</li>
+                <li>Item b</li>
+            </ol>
+        </li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <h2>Input bars</h2>
+
+    <p>Text</p>
+    <div class="input-wrapper">
+        <label for="text_input">We gave your name to the roots this time.</label>
+        <input type="text" name="text_input" placeholder="We watched you in the mirror again">
+    </div>
+
+    <p>Number</p>    
+    <div class="input-wrapper">
+        <label for="number_input">You are the 9th to speak. Only 3 ever returned.</label>
+        <input type="number" name="number_input" placeholder="The earth gave back 5 sets of bones.">
+    </div>
+
+    <p>Form</p>    
+    <form>
+        <div class="input-wrapper">
+            <label for="text_input">Your birthmark has 7 ridges. That's how they found you.</label>
+            <input type="text" name="text_input" placeholder="That’s the order. We’ve already done two.
+    ">
+            
+            <label for="number_input">He stares through the 11th window every night.</label>
+            <input type="number" name="number_input" placeholder="It’s always the 11th.">
+
+            <button type="submit">Tonight makes 13.</button>
+        </div>
+    </form>
+    
+
+{% endblock %}
