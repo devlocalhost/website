@@ -17,11 +17,13 @@
 
     <h2>Get lyrics</h2>
     <form action="/lyrics" method="get">
-        <label for="search_query">Enter song title</label>
-        
-        <input type="search" id="search_query" name="search_query" placeholder="The Weeknd How Do I Make You Love Me?" required="">
-        
-        <button type="submit">Search</button>
+        <div class="input-wrapper">
+            <label for="search_query">Enter song title</label>
+            
+            <input type="search" id="search_query" name="search_query" placeholder="The Weeknd How Do I Make You Love Me?" required="">
+            
+            <button type="submit">Search</button>
+        </div>
     </form>
 
 {% endblock %}

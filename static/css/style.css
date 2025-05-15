@@ -121,7 +121,7 @@ button:hover {
     border: 1px solid var(--border-outline-color);
     border-radius: 8px;
     background: var(--body-secondary-color);
-    /* color: var(--primary-text-color); */
+    color: var(--primary-text-color);
     padding: 0.6em 0.8em;
     outline: none;
     font-size: 1em;
