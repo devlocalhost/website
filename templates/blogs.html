@@ -6,9 +6,8 @@
 
 {% block content %}
 
-    <div class="navigation-top">
-        <span><a href="/">← Home</a></span>
-        <span class="backbtn" onclick="history.back()">→ kcaB</span>
+    <div class="navigation">
+        <p><a href="/">Home</a> &gt; <a href="{{ request.endpoint }}" class="current-endpoint">Blogs</a></p>
     </div>
     
     <h1 class="colored" onclick="toggleStylesheet()">Blogs</h1>

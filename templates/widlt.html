@@ -6,9 +6,8 @@
 
 {% block content %}
 
-    <div class="navigation-top">
-        <span><a href="/">← Home</a></span>
-        <span class="backbtn" onclick="history.back()">→ kcaB</span>
+    <div class="navigation">
+        <p><a href="/">Home</a> &gt; <a href="{{ request.endpoint }}" class="current-endpoint">What is dev listening to?</a></p>
     </div>
 
     <h1 class="colored">What is dev listening to?</h1>
