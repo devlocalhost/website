@@ -48,6 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     margin-top: 0.4em; /* is this stupid? */
+    margin-bottom: 0.4em; /* is this stupid? */
 }
 
 code,
@@ -152,7 +153,7 @@ button:hover {
 }
 
 .current-endpoint {
-    color: var(--primary-text-color);
+    color: #45A557;
 }
 
 .primary-text-color {
