@@ -17,6 +17,12 @@
             padding-left: 0;
             padding-right: 0;
         }
+
+        .code-block {
+            color: var(--primary-text-color);
+            border-width: 0;
+            padding: 0;
+        }
     {% endif %}
 
     .red::first-letter {
@@ -47,13 +53,13 @@
         <p>{{ data['message'] }}</p>
 
         <h2>API response</h2>
-        <code>{{ data }}</code>
+        <code class="code-block">{{ data }}</code>
     {% elif data['status'] == 200 %}
         <h1 class="colored">{{ data["title"] }} by {{ data["artists"] }}</h1>
         <p>Sources: <a href="{{ data['source'] }}">Lyrics</a>, <a href="{{ data['cover_image'] }}">Image</a>. Generate an image using trackard by clicking <a href="https://trackard.dev64.xyz/get?username=&service=&track_title_artist={{ data['title'].replace(' ', '+') }}{{ data['artists'].replace(' ', '+') }}&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">here</a>.</p>
         
         <h2>Lyrics</h2>
-        <code>{{ data["lyrics"] }}</code>
+        <code class="code-block">{{ data["lyrics"] }}</code>
     {% else %}
         <h1 class="red">Unexpected error</h1>
         <p>API returned (if) unexpected result. Check the raw response below, it might be useful.</p>
