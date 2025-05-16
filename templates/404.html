@@ -7,7 +7,7 @@
 {% block head %}
 {{ super() }}
     <style type="text/css">
-        p {
+        .italic-text {
             font-style: italic;
         }
 
@@ -52,12 +52,18 @@
 
 {% block content %}
 
-    <h1 class="colo_red" onclick="toggleStylesheet()">dev64&#39;s website</h1>
+    <div class="navigation">
+        <p><a href="/">Index</a> &gt; <a href="{{ request.full_url }}" class="current-endpoint">!?!?</a></p>
+    </div>
 
-    <p>You’ve <span class="wan">wandered</span> far, you’ve <span class="lo">lost</span> your way,<br>A <span class="fof">404</span> greets you, here to stay.<br>This page you seek has <span class="go">gone </span>astray,<br>A <span class="dig">digital ghost</span> that won’t obey.</p>
+    <h1 class="colo_red">dev64&#39;s website</h1>
 
-    <p>But don’t give up, don’t lose your cheer,<br>The <span class="we">web</span> is vast, and help is near.<br>A simple click, a scroll, a tap,<br>And soon you'll be back on the <span class="ma">map.</span></p>
-    
-    <p>So let’s <span class="le">leave</span> this page, it’s time to <span class="ro">roam</span>,<br><a href="/">Find your way back</a>, back to <span class="ho">home</span>.<br>No more <span class="de">detours</span>, no more missteps,<br>Just endless paths where <span class="adv">adventure</span> rests.</p>
+    <div class="italic-text">
+        <p>You’ve <span class="wan">wandered</span> far, you’ve <span class="lo">lost</span> your way,<br>A <span class="fof">404</span> greets you, here to stay.<br>This page you seek has <span class="go">gone </span>astray,<br>A <span class="dig">digital ghost</span> that won’t obey.</p>
+
+        <p>But don’t give up, don’t lose your cheer,<br>The <span class="we">web</span> is vast, and help is near.<br>A simple click, a scroll, a tap,<br>And soon you'll be back on the <span class="ma">map.</span></p>
+        
+        <p>So let’s <span class="le">leave</span> this page, it’s time to <span class="ro">roam</span>,<br><a href="/">Find your way back</a>, back to <span class="ho">home</span>.<br>No more <span class="de">detours</span>, no more missteps,<br>Just endless paths where <span class="adv">adventure</span> rests.</p>
+    </div>
 
 {% endblock %}

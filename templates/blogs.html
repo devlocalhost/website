@@ -7,10 +7,10 @@
 {% block content %}
 
     <div class="navigation">
-        <p><a href="/">Home</a> &gt; <a href="{{ request.endpoint }}" class="current-endpoint">Blogs</a></p>
+        <p><a href="/">Index</a> &gt; <a href="{{ request.full_url }}" class="current-endpoint">Blog</a></p>
     </div>
     
-    <h1 class="colored" onclick="toggleStylesheet()">Blogs</h1>
+    <h1 class="colored">Blog</h1>
 
     <p>On this route, you will find my "blog" posts. "blog" in quotes because this route wont (really) contain blog posts only, it could (or will?) contain other stuff too.</p>
 
