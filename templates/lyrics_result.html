@@ -40,6 +40,8 @@
         <p><a href="/">Index</a> &gt; <a href="{{ request.endpoint }}">Lyrics</a> &gt; <a href="{{ request.full_path }}" class="current-endpoint">Lyrics result</a></p>
     </div>
 
+    <hr>
+
     {% if data['status'] == 404 %}
         <h1 class="yellow">No result.</h1>
         <p>{{ data['message'] }}</p>
