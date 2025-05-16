@@ -3,7 +3,7 @@
     --body-background-color: #000000;
     --body-secondary-color: #0A0A0A;
     --primary-text-color: #EDEDED;
-    --secondary-text-color: #A1A1A1;
+    --secondary-text-color: #B6B6B6;
     --border-outline-color: #454545;
     --element-hover-background-color: #171717;
     --button-background-color: #EDEDED;
@@ -35,20 +35,14 @@ body {
 }
 
 hr {
-    /* margin: 3em 0; */
     border: 1px var(--border-outline-color) solid;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    /* margin-top: 2em; */
     color: var(--primary-text-color);
     line-height: 1.2;
     margin-bottom: 0.4em;
-}
-
-p {
-    margin-top: 0.4em; /* is this stupid? */
-    margin-bottom: 0.4em; /* is this stupid? */
+    margin-top: 0.4em;
 }
 
 code,
