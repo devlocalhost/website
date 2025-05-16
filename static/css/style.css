@@ -17,7 +17,11 @@
 @supports (font-variation-settings: normal) {
     :root { font-family: InterVariable, sans-serif; }
 }
-/* inter font */
+
+html {
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
+}
 
 body {
     font-size: 18px;
