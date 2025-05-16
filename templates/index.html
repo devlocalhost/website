@@ -4,16 +4,27 @@
     index - dev64&#39;s website
 {% endblock %}
 
+{% block head %}
+{{ super() }}
+
+<style>
+    .old-index {
+        color: #E5484D;
+    }
+</style>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="navigation">
         <a href="/" class="current-endpoint">Index</a>
-        <a href="/?old=true">Old index</a>
+        <a href="/?old=true" class="old-index">Old index</a>
     </div>
 
     <hr>
 
-    <h1 class="colored">dev64</h1>
+    <h1 class="colored">dev64.</h1>
     <p class="primary-text-color">A (2005 - {current_year}) year old python and "web developer".</p>
 
     <h2>This site...</h2>
@@ -23,6 +34,6 @@
     <p>Want to read stuff? Click <a href="/blog">here</a> to see my "blog posts".</p>
 
     <h2 class="colored">Sitemap</h2>
-    <p>Curious about my website? Click <a href="/blog/sitemap">here</a> to see the sitemap of this website.</p>
+    <p>Want to see what places you can visit? Click <a href="/blog/sitemap">here</a> to see the sitemap of this website.</p>
     
 {% endblock %}
