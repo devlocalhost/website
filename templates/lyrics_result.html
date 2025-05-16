@@ -56,7 +56,7 @@
         <code class="code-block">{{ data }}</code>
     {% elif data['status'] == 200 %}
         <h1 class="colored">{{ data["title"] }} by {{ data["artists"] }}</h1>
-        <p>Sources: <a href="{{ data['source'] }}">Lyrics</a>, <a href="{{ data['cover_image'] }}">Image</a>. Generate an image using trackard by clicking <a href="https://trackard.dev64.xyz/get?username=&service=&track_title_artist={{ data['title'].replace(' ', '+') }}{{ data['artists'].replace(' ', '+') }}&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">here</a>.</p>
+        <p>Sources: <a href="{{ data['source'] }}">Lyrics</a>, <a href="{{ data['cover_image'] }}">Image</a>. You can generate an image using <a href="https://trackard.dev64.xyz/get?username=&service=&track_title_artist={{ data['title'].replace(' ', '+') }}+{{ data['artists'].replace(' ', '+') }}&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">trackard</a>, if you'd like.</p>
         
         <h2>Lyrics</h2>
         <code class="code-block">{{ data["lyrics"] }}</code>

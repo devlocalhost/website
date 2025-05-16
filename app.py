@@ -110,17 +110,7 @@ def lastfm_listen(username):
     artist = data["recenttracks"]["track"][0]["artist"]["#text"]
     title = data["recenttracks"]["track"][0]["name"]
 
-    try:
-        timestamp = datetime.datetime.fromtimestamp(int(data["recenttracks"]["track"][0]["date"]["uts"])).strftime(
-            "%A, %B %d %Y - %I:%M:%S %p"
-        )
-
-    except KeyError:
-        timestamp = datetime.datetime.fromtimestamp(int(data["recenttracks"]["track"][1]["date"]["uts"])).strftime(
-            "%A, %B %d %Y - %I:%M:%S %p"
-        )
-
-    return (title, artist, nowplaying, timestamp, "lastfm")
+    return (title, artist, nowplaying, "lastfm")
 
 
 def listenbrainz_listen(username):
@@ -137,15 +127,7 @@ def listenbrainz_listen(username):
     artist = data.artist_name
     title = data.track_name
 
-    try:
-        timestamp = datetime.datetime.fromtimestamp(data.listened_at).strftime(
-            "%A, %B %d %Y - %I:%M:%S %p"
-        )
-
-    except:
-        timestamp = "Unknown"
-
-    return (title, artist, nowplaying, timestamp, "listenbrainz")
+    return (title, artist, nowplaying, "listenbrainz")
 
 
 def custom_header_plugin(md):
