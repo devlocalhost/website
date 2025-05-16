@@ -208,6 +208,9 @@ def status():
 
 @app.route("/")
 def home():
+    if request.args.get("old") == "true":
+        return render_template("index_old.html")
+
     return render_template("index.html")
 
 
