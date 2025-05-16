@@ -43,6 +43,11 @@ h1, h2, h3, h4, h5, h6 {
     /* margin-top: 2em; */
     color: var(--primary-text-color);
     line-height: 1.2;
+    margin-bottom: 0.2em;
+}
+
+p {
+    margin-top: 0.4em; /* is this stupid? */
 }
 
 code,
@@ -73,13 +78,13 @@ code:hover {
 }
 
 a {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     transition: color 0.3s ease;
     word-break: break-word; /* possibly a bad choice? */
 }
 
 a:hover {
-    color: var(--primary-text-color);
+    color: var(--accent-color);
 }
 
 li::marker {
@@ -159,6 +164,7 @@ button:hover {
     justify-content: space-between;
     padding-left: 12px;
     padding-right: 12px;
+    padding-bottom: 12px;
 }
 
 .navigation p {
