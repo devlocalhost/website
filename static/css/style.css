@@ -147,3 +147,7 @@ button:hover {
 .current-endpoint {
     color: var(--primary-text-color);
 }
+
+.primary-text-color {
+    color: var(--primary-text-color);
+}
