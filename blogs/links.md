@@ -1,15 +1,21 @@
 # Links
-Some links that i (or you) can easily access, so you dont have to remember all these or use a clipboard, i dont know.
+Below you will find random (or important?) links. These are not related to this website. Means, they are "external" links, not part of this website.
 
-- [website](https://dev64.xyz)
-- [laurel_updates](https://devlocalhost.github.io/lu)
-- [teleoasth](https://teleoasth.dev64.xyz)
-- [shl](https://shl.dev64.xyz)
-- [trackard](https://trackard.dev64.xyz)
-- [pylyrical](https://pylyrical.dev64.xyz)
-- [what is dev listening to?](https://dev64.xyz/widlt)
-- [files](https://f.dev64.xyz)
-- [upload (single_php_filehost)](https://u.dev64.xyz)
-- [mkr/bin](https://b.dev64.xyz)
+1. Hosted services:
+    - [files](https://f.dev64.xyz), [uploader](https://u.dev64.xyz)
+    - [mkr/bin](https://b.dev64.xyz)
 
-Thats it, for now.
+2. Personal projects:
+    - [laurel_updates](https://laurel-updates.dev64.xyz)
+    - [pylyrical_api](https://pylyrical.dev64.xyz)
+    - [shl](https://shl.dev64.xyz)
+    - [teleoasth](https://teleoasth.dev64.xyz)
+    - [trackard](https://trackard.dev64.xyz)
+
+3. [GitHub](https://github.com/devlocalhost)
+
+4. Music:
+    - [Apple Music playlist](https://music.apple.com/bs/playlist/pl.u-mJy8gW4CYNjXYD9)
+    - [Qobuz playlist](https://play.qobuz.com/playlist/32094463)
+    - [Last.fm profile](https://last.fm/user/dev64/)
+    - [Listenbrainz profile](https://listenbrainz.org/user/dev64/)
