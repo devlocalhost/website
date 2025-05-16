@@ -98,7 +98,7 @@ button {
 }
 
 button:hover {
-    transform: translateY(-4px);
+    transform: scale(0.96);
 }
 
 .input-wrapper {
