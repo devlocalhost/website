@@ -7,7 +7,7 @@ Here you will find all (I guess) links on this website.
     - [Lyrics](/lyrics)
     - [Status](/s)
     - [Testpage](/t)
-    - [What is dev listeing to?](/widlt)
+    - [What is dev listening to?](/widlt)
 2. [Old Index](/?old=true)
 
 Is that it? Yes. It is. But, of course, I can give you [more](/blog/links).
