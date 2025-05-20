@@ -45,7 +45,7 @@ PYLISTENBRAINZ_CLIENT = pylistenbrainz.ListenBrainz()
 
 LASTFM_API_BASE_URL = "https://ws.audioscrobbler.com/2.0"
 LASTFM_API_KEY = os.environ.get("LASTFM_API_KEY")
-
+WEBSITE_MODE = os.getenv("WEBSITE_MODE")
 
 class CustomRenderer(mistune.HTMLRenderer):
     def heading(self, text, level):
@@ -53,7 +53,7 @@ class CustomRenderer(mistune.HTMLRenderer):
         return f'<h{level}>{text}</h{level}><div id="{header_id}"></div>'
 
 
-if os.getenv("WEBSITE_MODE"):
+if WEBSITE_MODE:
     print("[WEBSITE] DEBUG = True")
     app.config["DEBUG"] = True
 
@@ -187,6 +187,7 @@ def status():
             time_now,
             uptime,
             nsysmon_plugins_data,
+            WEBSITE_MODE,
         ],
     )
 
