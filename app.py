@@ -74,7 +74,7 @@ def verify_signature(secret_token, signature_header, payload_body):
 
 
 def get_uptime(seconds):
-    intervals = (("week", 604800), ("day", 86400), ("hour", 3600), ("minute", 60))
+    intervals = (("month", 2628288), ("week", 604800), ("day", 86400), ("hour", 3600), ("minute", 60))
     result = []
 
     original_seconds = seconds
