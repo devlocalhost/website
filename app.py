@@ -95,6 +95,9 @@ def get_uptime(seconds):
 
     return ", ".join(result)
 
+def get_uptime_since(timestamp):
+    return datetime.fromtimestamp(timestamp).strftime("%A, %B %d %Y, %I:%M:%S %p")
+
 
 def lastfm_listen(username):
     resp = requests.get(
@@ -136,7 +139,7 @@ def custom_header_plugin(md):
 
 markdown_parser = mistune.create_markdown(plugins=[custom_header_plugin, 'strikethrough'])
 
-app.jinja_env.globals.update(get_uptime=get_uptime)
+app.jinja_env.globals.update(get_uptime=get_uptime, get_uptime_since=get_uptime_since)
 
 @app.route("/autod", methods=["POST"])
 def autod():
