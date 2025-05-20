@@ -53,7 +53,7 @@ class CustomRenderer(mistune.HTMLRenderer):
         return f'<h{level}>{text}</h{level}><div id="{header_id}"></div>'
 
 
-if WEBSITE_MODE:
+if WEBSITE_MODE == "debug":
     print("[WEBSITE] DEBUG = True")
     app.config["DEBUG"] = True
 
