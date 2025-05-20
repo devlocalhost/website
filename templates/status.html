@@ -31,12 +31,13 @@
             <li>Available: {{ data[6][1]["physical"]["percentage"]["available"] }}%</li>
         </ul>
 
-	<li>Virtual memory usage:</li>
-        <ul>
-            <li>Used: {{ data[6][1]["virtual"]["percentage"]["used"] }}%</li>
-            <li>Free: {{ data[6][1]["virtual"]["percentage"]["free"] }}%</li>
-        </ul>
-
+        {% if data[6][1]["virtual"]["values"]["total"] != 0 %}
+        <li>Virtual memory usage:</li>
+            <ul>
+                <li>Used: {{ data[6][1]["virtual"]["percentage"]["used"] }}%</li>
+                <li>Free: {{ data[6][1]["virtual"]["percentage"]["free"] }}%</li>
+            </ul>
+        {% endif %}
 
         <li>Load times: {{ data[6][2]["load_times"]["1"] }}, {{ data[6][2]["load_times"]["5"] }}, {{ data[6][2]["load_times"]["15"] }}</li>
     </ul>
