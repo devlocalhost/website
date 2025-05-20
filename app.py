@@ -96,7 +96,7 @@ def get_uptime(seconds):
     return ", ".join(result)
 
 def get_uptime_since(timestamp):
-    return datetime.fromtimestamp(timestamp).strftime("%A, %B %d %Y, %I:%M:%S %p")
+    return datetime.datetime.fromtimestamp(timestamp).strftime("%A, %B %d %Y, %I:%M:%S %p")
 
 
 def lastfm_listen(username):
