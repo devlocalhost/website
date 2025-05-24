@@ -80,6 +80,10 @@ li::marker {
     color: var(--primary-text-color);
 }
 
+ol ul, ol ol, ul ol {
+    padding-left: 20px;
+}
+
 button {
     font-size: 18px;
     padding: 12px;
