@@ -18,7 +18,7 @@ Hello there, I'm dev64. A (2005 - {current_year}) programmer, Linux user, Applic
     - While I plan to become a programmer/developer, programming is also my hobby (If that makes sense). I love programming, and I'm very passionate about it. No plans for now, but Android app development might be my target.
 2. Music
     - I listen to music daily. You can check what I listen to by visiting my [Last.fm](https://www.last.fm/user/dev64) or [Listenbrainz](https://listenbrainz.org/user/dev64/) profiles. Alternatively, you can see my [Apple Music](https://shl.dev64.xyz/r/playm) or [Qobuz](https://shl.dev64.xyz/r/playq) playlists.
-    - I usually listen to everything, but my main genre is Old-school hip-hop (Gang Starr, Nas, Pete Rock & CL Smooth, etc). Recently, I've started to listen to metal and rock.
+    - I usually listen to everything, but my main genre is Old-school hip-hop (Gang Starr, Nas, Pete Rock & CL Smooth, etc). Recently, I started listening to metal and rock recently.
 3. Gaming
     - I haven't played a lot of games, but I've played some popular titles, like Minecraft, GTA series, Silent Hill 2 (Remake), and more.
     - On mobile, I used to play shooter/FPS games, like CODM and Bloodstrike, but due to limited time and in-game updates, I don't play that often anymore.
