@@ -1,7 +1,6 @@
 # Sitemap
-Here you will find all (I guess) links on this website.
+Sitemap for [dev64.xyz](https://dev64.xyz).
 
-## List
 1. [Index](/)
     - [Blog](/blog)
     - [Lyrics](/lyrics)
@@ -9,5 +8,3 @@ Here you will find all (I guess) links on this website.
     - [Testpage](/t)
     - [What is dev listening to?](/widlt)
 2. [Old Index](/?old=true)
-
-Is that it? Yes. It is. But, of course, I can give you [more](/blog/links).
