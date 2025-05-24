@@ -14,10 +14,8 @@
 
     <h1 class="colored">What is dev listening to?</h1>
 
-    <p>He {{ "is" if listen_data[2] else "was" }} listening to <code>{{ listen_data[0] }} by {{ listen_data[1] }}</code></p>
+    <p>He {{ "is" if listen_data[2] else "was" }} listening to <span class="primary-text-color" style="font-weight: bold;">{{ listen_data[0] }} by {{ listen_data[1] }}</span>. Source: {{ ('<a href="https://www.last.fm/user/dev64">Last.fm</a>' if service == "Last.fm" else ('<a href="https://listenbrainz.org/user/dev64/">ListenBrainz</a>' if service == "ListenBrainz" else 'Unknown')) | safe }}</p>
     
-    <p>Source: {{ ('<a href="https://www.last.fm/user/dev64">Last.fm</a>' if service == "Last.fm" else ('<a href="https://listenbrainz.org/user/dev64/">ListenBrainz</a>' if service == "ListenBrainz" else 'Unknown')) | safe }}</p>
-    
-    <p>Click <a href="https://trackard.dev64.xyz/get?username=dev64&service={{ listen_data[4] }}&track_title_artist=&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">here</a>, to generate an image for this song using trackard, or see the lyrics using pylyrical by clicking <a href="/lyrics?search_query={{ listen_data[0].replace(' ', '+') }}+{{ listen_data[1].replace(' ', '+') }}">here</a>.</p>
+    <p>Generate a image for this song using <a href="https://trackard.dev64.xyz/get?username=dev64&service={{ listen_data[4] }}&track_title_artist=&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">trackard</a>, or see lyrics using <a href="/lyrics?search_query={{ listen_data[0].replace(' ', '+') }}+{{ listen_data[1].replace(' ', '+') }}">pylyrical</a>.</p>
 
 {% endblock %}
