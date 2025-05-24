@@ -21,7 +21,7 @@
 {% block content %}
 
     <div class="navigation">
-        <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="/blog">Blog</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_url }}" class="current-endpoint">Blog post</a></span>
+        <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="/blog">Blog</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_url }}" class="current-endpoint">{{ blog_title }}</a></span>
     </div>
 
     <hr>
@@ -33,5 +33,5 @@
     <hr>
 
     <span class="blog_details"><p>Created: {{ date_created }}<br>Modified: {{ date_last_modified }}<br><a href="https://github.com/devlocalhost/website/commits/master/blogs/{{ request.path.split('/')[-1] }}.md">View history</a></p></span>
-    
+
 {% endblock %}
