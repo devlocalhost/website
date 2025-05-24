@@ -4,12 +4,23 @@
     index - dev64&#39;s website
 {% endblock %}
 
+{% block head %}
+{{ super() }}
+
+<style>
+    .old-index {
+        color: #E5484D;
+    }
+</style>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="navigation">
-        <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_url }}" class="current-endpoint">Old Index</a></span>
+        <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_url }}" class="old-index">Old Index</a></span>
     </div>
-
+    
     <hr>
     
     <h1 class="colored">dev64&#39;s website</h1>
