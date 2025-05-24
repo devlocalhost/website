@@ -99,9 +99,6 @@ button {
 
 button:active {
     transform: scale(0.96);
-}
-
-button:hover {
     background: var(--button-hover-color);
 }
 
