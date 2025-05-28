@@ -32,6 +32,21 @@
     .yellow::first-letter {
         color: #fdcc4b;
     }
+
+   .navigation {
+        display: flex;
+        overflow: hidden;
+        align-items: center;
+    }
+
+    .navigation .current-endpoint {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
 </style>
 
 {% endblock %}
@@ -42,8 +57,8 @@
 
 {% block content %}
 
-    <div class="navigation">
-        <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.endpoint }}">Lyrics</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_path }}" class="current-endpoint">Result</a></span>
+   <div class="navigation">
+        <a href="/">Index</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;<a href="{{ request.endpoint }}">Lyrics</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;<a href="{{ request.full_path }}" class="current-endpoint">{{ data["title"] }}</a>
     </div>
 
     <hr>
