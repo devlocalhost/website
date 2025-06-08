@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    status of websites - dev64&#39;s website
+{% endblock %}
+
+{% block content %}
+
+    <div class="navigation">
+        <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.endpoint }}">Status</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_url }}" class="current-endpoint">All websites</a></span>        
+    </div>
+
+    <hr>
+
+    <h1 class="colored">Status for all the websites</h1>
+    <p>A route where I (and anyone else) can see the status of my websites: laurel_updates, pylyrical, shl, teleoasth, and trackard.</p>
+
+    {% for website_data in data %}
+    <h2>{{ website_data[0] }}</h2>
+    <ul>
+        <li>Systemd status: {{ website_data[1]["status"]["systemd_status"] }}</li>
+        <li>Commit: <code>{{ website_data[1]["status"]["git"]["commit_hash"] }}</code> <a href="https://github.com/devlocalhost/{{ website_data[0] }}/commit/{{ website_data[1]['status']['git']['commit_hash'] }}">{{ website_data[1]["status"]["git"]["commit_message"] }}</a></li>
+        <li>Platform: <code>{{ website_data[1]["status"]["platform"] }}</code></li>
+        <li>Website uptime: {{ website_data[1]["status"]["uptime"]["uptime"] }} ({{ website_data[1]["status"]["uptime"]["since"] }})</li>
+        <li>Mode: {{ website_data[1]["status"]["website_mode"] }}</li>
+    </ul>
+    {% endfor %}
+
+    <h2>Raw data</h2>
+    <code class="code-block">{{ data }}</code>
+
+{% endblock %}
