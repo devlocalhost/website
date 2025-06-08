@@ -16,6 +16,8 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+import status
+
 from nsysmon.plugins import cpuinfo
 from nsysmon.plugins import meminfo
 from nsysmon.plugins import loadavg
@@ -160,7 +162,22 @@ def autod():
 
 
 @app.route("/s")
+@app.route("/status")
 def status():
+    if request.args.get("all") == "true":
+        # TODO: find a way to handle the case when a website time outs or something
+        # TODO: maybe move this to a different route, like /manage?
+        
+        websites = ["laurel-updates", "pylyrical", "shl", "teleoasth", "trackard"]
+        website_names = ["laurel_updates", "pylyrical_api", "shl", "teleoasth", "trackard"]
+        data = []
+
+        for index, name in enumerate(websites):
+            data.append([website_names[index], requests.get(f"https://{name}.dev64.xyz/sj", timeout=5).json()])
+
+        
+        return render_template("status_websites.html", data=data)
+
     time_now_timestamp = int(
         datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC))
     )
@@ -194,6 +211,11 @@ def status():
             WEBSITE_MODE,
         ],
     )
+
+
+# @app.route("/sj")
+# def status_json():
+#     return status.get_status("website")
 
 
 @app.route("/")
