@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-import status
+# import status
 
 from nsysmon.plugins import cpuinfo
 from nsysmon.plugins import meminfo
