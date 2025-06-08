@@ -1,25 +1,24 @@
 import os
 import re
 import hmac
-import pytz
 import hashlib
 import datetime
 import platform
-import requests
 import subprocess
 import urllib.parse
 
+import requests
+import pytz
 import mistune
 import pylistenbrainz
 
-from flask import Flask, render_template, redirect, request
+from dotenv import load_dotenv
+from flask import Flask, render_template, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from nsysmon.plugins import cpuinfo
 from nsysmon.plugins import meminfo
 from nsysmon.plugins import loadavg
-
-from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -46,6 +45,7 @@ PYLISTENBRAINZ_CLIENT = pylistenbrainz.ListenBrainz()
 LASTFM_API_BASE_URL = "https://ws.audioscrobbler.com/2.0"
 LASTFM_API_KEY = os.environ.get("LASTFM_API_KEY")
 WEBSITE_MODE = os.getenv("WEBSITE_MODE")
+
 
 class CustomRenderer(mistune.HTMLRenderer):
     def heading(self, text, level):
@@ -77,8 +77,6 @@ def get_uptime(seconds):
     intervals = (("week", 604800), ("day", 86400), ("hour", 3600), ("minute", 60))
     result = []
 
-    original_seconds = seconds
-
     if seconds < 60:
         result.append(f"{seconds} seconds")
 
@@ -95,13 +93,17 @@ def get_uptime(seconds):
 
     return ", ".join(result)
 
+
 def get_uptime_since(timestamp):
-    return datetime.datetime.fromtimestamp(timestamp).strftime("%A, %B %d %Y, %I:%M:%S %p")
+    return datetime.datetime.fromtimestamp(timestamp).strftime(
+        "%A, %B %d %Y, %I:%M:%S %p"
+    )
 
 
 def lastfm_listen(username):
     resp = requests.get(
-        f"{LASTFM_API_BASE_URL}/?api_key={LASTFM_API_KEY}&method=User.getrecenttracks&user={username}&format=json&limit=1"
+        f"{LASTFM_API_BASE_URL}/?api_key={LASTFM_API_KEY}&method=User.getrecenttracks&user={username}&format=json&limit=1",
+        timeout=15,
     )
     data = resp.json()
 
@@ -137,9 +139,12 @@ def custom_header_plugin(md):
     md.renderer = CustomRenderer()
 
 
-markdown_parser = mistune.create_markdown(plugins=[custom_header_plugin, 'strikethrough'])
+markdown_parser = mistune.create_markdown(
+    plugins=[custom_header_plugin, "strikethrough"]
+)
 
 app.jinja_env.globals.update(get_uptime=get_uptime, get_uptime_since=get_uptime_since)
+
 
 @app.route("/autod", methods=["POST"])
 def autod():
@@ -151,13 +156,12 @@ def autod():
 
         return "", 200
 
-    else:
-        return "", 403
+    return "", 403
 
 
 @app.route("/s")
 def status():
-    TIME_NOW_TIMESTAMP = int(
+    time_now_timestamp = int(
         datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC))
     )
     # TIME_NOW_TIMESTAMP = datetime.datetime.now(pytz.UTC).strftime("%A, %B %d %Y - %I:%M:%S %p %Z")
@@ -165,11 +169,11 @@ def status():
     start_time = datetime.datetime.fromtimestamp(START_TIME_TIMESTAMP_UTC).strftime(
         "%A, %B %d %Y - %I:%M:%S %p"
     )
-    time_now = datetime.datetime.fromtimestamp(TIME_NOW_TIMESTAMP).strftime(
+    time_now = datetime.datetime.fromtimestamp(time_now_timestamp).strftime(
         "%A, %B %d %Y - %I:%M:%S %p"
     )
 
-    uptime = get_uptime(TIME_NOW_TIMESTAMP - START_TIME_TIMESTAMP_UTC)
+    uptime = get_uptime(time_now_timestamp - START_TIME_TIMESTAMP_UTC)
 
     nsysmon_plugins_data = [
         cpuinfo.Cpuinfo().get_data(),
@@ -284,7 +288,9 @@ def lyrics():
     search_query = request.args.get("search_query")
 
     if search_query:
-        data = requests.get(f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}").json()
+        data = requests.get(
+            f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}"
+        ).json()
 
         return render_template("lyrics_result.html", data=data)
 
