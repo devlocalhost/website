@@ -32,8 +32,12 @@
     .yellow::first-letter {
         color: #fdcc4b;
     }
-
-   .navigation {
+    
+    .notitle {
+        color: #fdcc4b;
+    }
+    
+    .navigation {
         display: flex;
         overflow: hidden;
         align-items: center;
@@ -52,13 +56,13 @@
 {% endblock %}
 
 {% block title %}
-    lyrics result - dev64&#39;s website
+   lyrics result - dev64&#39;s website
 {% endblock %}
 
 {% block content %}
 
    <div class="navigation">
-        <a href="/">Index</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;<a href="{{ request.endpoint }}">Lyrics</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;<a href="{{ request.full_path }}" class="current-endpoint">{{ data["title"] }}</a>
+        <a href="/">Index</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;<a href="{{ request.endpoint }}">Lyrics</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;{% if data["status"] == 200 %}<a href="{{ request.full_path }}" class="current-endpoint">{{ data["title"] }}</a>{% else %}<a href="{{ request.full_path }}" class="current-endpoint notitle">!?!?</a>{% endif %}
     </div>
 
     <hr>
