@@ -1,71 +1,52 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Bold.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Bold-Italic.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Bold-Italic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Italic.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
-    --accent-color: #0090FF;
+    --accent-color: #2997FF;
     --body-background-color: #000000;
     --body-secondary-color: #0A0A0A;
     --primary-text-color: #EDEDED;
-    --secondary-text-color: #B6B6B6;
+    --secondary-text-color: #CCCCCC;
     --border-outline-color: #454545;
     --element-hover-background-color: #171717;
     --button-background-color: #EDEDED;
     --button-hover-color: #D4D4D4;
     --button-text-color: #0A0A0A;
-}
-
-@font-face {
-    font-family: 'SF Pro Text';
-    src: url('/static/fonts/SF-Pro-Text-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'SF Pro Text';
-    src: url('/static/fonts/SF-Pro-Text-RegularItalic.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'SF Pro Text';
-    src: url('/static/fonts/SF-Pro-Text-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'SF Pro Text';
-    src: url('/static/fonts/SF-Pro-Text-BoldItalic.otf') format('opentype');
-    font-weight: 700;
-    font-style: italic;
-}
-
-/* JetBrains Mono */
-@font-face {
-    font-family: 'JetBrains Mono';
-    src: url('/static/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'JetBrains Mono';
-    src: url('/static/fonts/JetBrainsMono-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'JetBrains Mono';
-    src: url('/static/fonts/JetBrainsMono-Italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'JetBrains Mono';
-    src: url('/static/fonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
-    font-weight: 700;
-    font-style: italic;
 }
 
 html {
@@ -74,8 +55,9 @@ html {
 }
 
 body {
-    font-family: 'SF Pro Text', sans-serif;
-    font-size: 18px;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-display: block;
+    font-size: 17px;
     color: var(--secondary-text-color);
     background-color: var(--body-background-color);
     margin: 1em auto;
@@ -100,7 +82,7 @@ code,
 .code-block {
     background-color: var(--body-secondary-color);
     border: 1px var(--border-outline-color) solid;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono";
     font-size: 16px;
     word-break: break-word;
     white-space: pre-wrap;
@@ -142,7 +124,7 @@ ol ul, ol ol, ul ol {
 }
 
 button {
-    font-size: 18px;
+    font-size: 16px;
     padding: 12px;
     border: 1px solid var(--border-outline-color);
     border-radius: 8px;
@@ -171,8 +153,8 @@ button:active {
 }
 
 .input-wrapper label {
-    color: var(--secondary-text-color);
-    font-size: 1em;
+    color: var(--primary-text-color);
+    font-size: 1.05em;
 }
 
 .input-wrapper input {
@@ -184,6 +166,10 @@ button:active {
     outline: none;
     font-size: 1em;
     transition: background-color 0.3s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: var(--secondary-text-color);
 }
 
 .input-wrapper input:focus {
@@ -211,7 +197,7 @@ button:active {
     justify-content: space-between;
     padding-left: 12px;
     padding-right: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 2px;
 }
 
 .navigation p {
