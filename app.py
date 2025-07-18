@@ -167,7 +167,7 @@ def status():
     if request.args.get("all") == "true":
         # TODO: find a way to handle the case when a website time outs or something
         # TODO: maybe move this to a different route, like /manage?
-        
+
         websites = ["laurel-updates", "pylyrical", "shl", "teleoasth", "trackard"]
         website_names = ["laurel_updates", "pylyrical_api", "shl", "teleoasth", "trackard"]
         data = []
@@ -175,7 +175,7 @@ def status():
         for index, name in enumerate(websites):
             data.append([website_names[index], requests.get(f"https://{name}.dev64.xyz/sj", timeout=5).json()])
 
-        
+
         return render_template("status_websites.html", data=data)
 
     time_now_timestamp = int(
@@ -310,9 +310,18 @@ def lyrics():
     search_query = request.args.get("search_query")
 
     if search_query:
+        # bad
         data = requests.get(
             f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}"
-        ).json()
+        )
+
+        try:
+            data = data.json()
+
+        except:
+            data = data.text
+
+        # bad
 
         return render_template("lyrics_result.html", data=data)
 
