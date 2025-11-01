@@ -123,7 +123,7 @@ ol ul, ol ol, ul ol {
 button {
     font-size: 16px;
     padding: 12px;
-    border: 1px solid var(--border-outline-color);
+    border: 1px solid #fff;
     border-radius: 8px;
     background: var(--button-background-color);
     color: var(--button-text-color);
