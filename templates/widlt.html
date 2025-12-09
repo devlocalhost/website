@@ -10,8 +10,6 @@
         <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_url }}" class="current-endpoint">What is dev listening to?</a></span>
     </div>
 
-    <hr>
-
     <h1 class="colored">What is dev listening to?</h1>
 
     <p>He {{ "is" if listen_data[2] else "was" }} listening to <span class="primary-text-color" style="font-weight: bold;">{{ listen_data[0] }} by {{ listen_data[1] }}</span>. Source: {{ ('<a href="https://www.last.fm/user/dev64">Last.fm</a>' if service == "Last.fm" else ('<a href="https://listenbrainz.org/user/dev64/">ListenBrainz</a>' if service == "ListenBrainz" else 'Unknown')) | safe }}</p>
