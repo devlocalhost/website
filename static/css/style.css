@@ -56,7 +56,7 @@ body {
     border-radius: 12px;
     padding: 10px;
     display: flex;
-    /* gap: 4px; */
+    gap: 4px;
 }
 
 .navigation span.last-itm {
