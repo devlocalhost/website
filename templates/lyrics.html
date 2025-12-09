@@ -16,19 +16,18 @@
 
 {% block content %}
 
-    <h1 class="colored">Lyrics - PyLyrical</h1>
+    <h1 class="colored">PyLyrical</h1>
 
-    <p>Lyrics using <a href="https://pylyrical.dev64.xyz">pylyrical</a>. A "wrapper", you could say, for <a href="https://genius.com" target="_blank">genius.com</a>, but better. No ads, no annoying pop ups. Just the lyrics.</p>
+    <p>Fetches lyrics for a track using <a href="https://pylyrical.dev64.xyz">pylyrical</a>. A "wrapper", you could say, for <a href="https://genius.com" target="_blank">genius.com</a>, but better. No ads, no annoying pop ups. Just the lyrics.</p>
 
     <p><span class="primary-text-color">Note: The API takes a few seconds to get the lyrics, so be patient. If it takes too long or you see an error, just reload the page.</p>
 
-    <h2>Get lyrics</h2>
     <form action="/lyrics" method="get">
-        <div class="input-wrapper">
-            <label for="search_query">Enter song title</label>
-            
-            <input type="search" id="search_query" name="search_query" placeholder="The Weeknd How Do I Make You Love Me?" required="">
-            
+        <div class="input-wrapper-group">
+            <label for="search_query">Track title</label>
+            <div class="input-wrapper">
+                <input type="search" id="search_query" name="search_query" placeholder="The Weeknd How Do I Make You Love Me?" required="">
+            </div>
             <button type="submit">Search</button>
         </div>
     </form>
