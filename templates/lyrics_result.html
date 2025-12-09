@@ -65,8 +65,6 @@
         <a href="/">Index</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;<a href="{{ request.endpoint }}">Lyrics</a>&nbsp;<span class="primary-text-color">&gt;</span>&nbsp;{% if data["status"] == 200 %}<a href="{{ request.full_path }}" class="current-endpoint">{{ data["title"] }}</a>{% else %}<a href="{{ request.full_path }}" class="current-endpoint notitle">!?!?</a>{% endif %}
     </div>
 
-    <hr>
-
     {% if data['status'] == 404 %}
         <h1 class="yellow">No result.</h1>
         <p>{{ data['message'] }}</p>
