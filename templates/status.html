@@ -4,13 +4,17 @@
     status - dev64&#39;s website
 {% endblock %}
 
-{% block content %}
+{% block navigation_inner %}
 
-    <div class="navigation">
+    <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.full_url }}" class="current-endpoint">Status</a></span>
     </div>
+    
+{% endblock %}
+
+{% block content %}
 
     <h1 class="colored">Status</h1>
     <p>Status page for this website. To see the status of all the websites I own, click <a href="/s?all=true">here</a>.</p>

@@ -4,13 +4,17 @@
     what is dev listening to - dev64&#39;s website
 {% endblock %}
 
-{% block content %}
+{% block navigation_inner %}
 
-    <div class="navigation">
+    <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.full_url }}" class="current-endpoint">What is dev listening to?</a></span>
     </div>
+    
+{% endblock %}
+
+{% block content %}
 
     <h1 class="colored">What is dev listening to?</h1>
 

@@ -59,15 +59,19 @@
    lyrics result - dev64&#39;s website
 {% endblock %}
 
-{% block content %}
+{% block navigation_inner %}
 
-   <div class="navigation">
+    <div class="navigation">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.endpoint }}">Lyrics</a></span>
         <span class="primary-text-color">&gt;</span>
         <span>{% if data["status"] == 200 %}<a href="{{ request.full_path }}" class="current-endpoint">{{ data["title"] }}</a></span>{% else %}<span><a href="{{ request.full_path }}" class="current-endpoint notitle">!?!?</a></span>{% endif %}
     </div>
+    
+{% endblock %}
+
+{% block content %}
 
     {% if data['status'] == 404 %}
         <h1 class="yellow">No result.</h1>

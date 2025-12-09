@@ -4,13 +4,17 @@
     testpage - dev64&#39;s website
 {% endblock %}
 
-{% block content %}
+{% block navigation_inner %}
 
-    <div class="navigation">
+    <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.full_url }}" class="current-endpoint">Testpage</a></span>
     </div>
+    
+{% endblock %}
+
+{% block content %}
 
     <h1 class="colored">The test page</h1>
     <p>In this page, you will (should?) find most elements used around the website. P (paragraph) tags, anchor (links) tags, code blocks, headers, etc. Very helpful for me to test and improve the UI of the website. Have fun i guess.</p>
