@@ -111,29 +111,32 @@
 
     <h2>Input bars</h2>
 
-    <p>Text</p>
-    <div class="input-wrapper">
+    <p>Input bars and forms with text, number and form types</p>
+
+    <div class="input-wrapper-group">
         <label for="text_input">We gave your name to the roots this time.</label>
-        <input type="text" id="text_input" placeholder="We watched you in the mirror again">
-    </div>
-
-    <p>Number</p>    
-    <div class="input-wrapper">
-        <label for="number_input">You are the 9th to speak. Only 3 ever returned.</label>
-        <input type="number" id="number_input" placeholder="The earth gave back 5 sets of bones.">
-    </div>
-
-    <p>Form</p>    
-    <form>
+        
         <div class="input-wrapper">
-            <label for="text_input">Your birthmark has 7 ridges. That's how they found you.</label>
-            <input type="text" id="text_input" placeholder="That’s the order. We’ve already done two.
-    ">
-            
-            <label for="number_input">He stares through the 11th window every night.</label>
-            <input type="number" id="number_input" placeholder="It’s always the 11th.">
+            <input type="text" id="text_input" placeholder="We watched you in the mirror again">
+        </div>
+    </div>
 
-            <button type="submit">Tonight makes 13.</button>
+    <div class="input-wrapper-group">
+        <label for="number_input">You are the 9th to speak. Only 3 ever returned.</label>
+
+        <div class="input-wrapper">
+            <input type="number" id="number_input" placeholder="42">
+        </div>
+    </div>
+   
+    <form>
+        <div class="input-wrapper-group">
+            <label for="text_input">Your birthmark has 7 ridges. That's how they found you.</label>
+            <div class="input-wrapper">
+                <input type="text" id="text_input" placeholder="That’s the order. We’ve already done two.
+        ">
+            </div>
+            <button type="submit">Find answer to life</button>
         </div>
     </form>
     

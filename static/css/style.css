@@ -1,10 +1,3 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
-
-
-
-
-
-
 @font-face {
     font-family: 'JetBrains Mono';
     src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
@@ -34,28 +27,22 @@
 }
 
 :root {
-    --accent-color: #2997FF;
-    --body-background-color: #000000;
-    --body-secondary-color: #0A0A0A;
-    --primary-text-color: #EDEDED;
-    --secondary-text-color: #CCCCCC;
+    --accent-color: #3584e4;
+    --anchor-color: #81d0ff;
+    --body-background-color: #222226;
+    --body-secondary-color: #333337;
+    --text-primary-color: #ffffff;
+    --text-secondary-color: #a3a3a5;
     --border-outline-color: #454545;
-    --element-hover-background-color: #171717;
-    --button-background-color: #EDEDED;
-    --button-hover-color: #D4D4D4;
-    --button-text-color: #0A0A0A;
-}
-
-html {
-    overflow-x: hidden;
-    margin-right: calc(-1 * (100vw - 100%));
+    --button-background-color: var(--accent-color);
+    --button-text-color: var(--text-primary-color);
 }
 
 body {
-    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-family: sans-serif;
     font-display: block;
     font-size: 17px;
-    color: var(--secondary-text-color);
+    color: var(--text-primary-color);
     background-color: var(--body-background-color);
     margin: 1em auto;
     max-width: 40em;
@@ -64,12 +51,38 @@ body {
     overflow-wrap: break-word;
 }
 
+.navigation {
+    background-color: #38383b;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    /* gap: 4px; */
+}
+
+.navigation span.last-itm {
+    margin-left: auto;
+}
+
+.navigation > *:first-child { padding-left: 10px; }
+.navigation > *:last-child { padding-right: 10px; }
+
+@media (max-width: 768px) {
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        left: 0%;
+        right: 0%;
+        border-radius: 0;
+        padding: 20px;
+    }
+}
+
 hr {
     border: 1px var(--border-outline-color) solid;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-text-color);
+    color: var(--text-primary-color);
     line-height: 1.2;
     margin-bottom: 0.4em;
     margin-top: 0.4em;
@@ -77,43 +90,35 @@ h1, h2, h3, h4, h5, h6 {
 
 code,
 .code-block {
-    background-color: var(--body-secondary-color);
-    border: 1px var(--border-outline-color) solid;
     font-family: "JetBrains Mono";
     font-size: 16px;
-    word-break: break-word;
-    white-space: pre-wrap;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    background-color: var(--body-secondary-color);
 }
 
 code {
     padding: 0 10px;
-    border-radius: 8px;
+    border-radius: 4px;
     display: inline-block;
 }
 
 .code-block {
+    word-break: break-word;
+    white-space: pre-wrap;
+    background-color: var(--body-secondary-color);
     padding: 12px 18px;
     border-radius: 12px;
     display: inline-block;
 }
 
-code:hover {
-    background-color: var(--element-hover-background-color);
-}
-
 a {
-    color: var(--primary-text-color);
+    color: var(--anchor-color);
     transition: color 0.3s ease;
     word-break: break-word; /* possibly a bad choice? */
 }
 
-a:hover {
-    color: var(--accent-color);
-}
-
 li::marker {
-    color: var(--primary-text-color);
+    color: var(--text-primary-color);
 }
 
 ol ul, ol ol, ul ol {
@@ -123,42 +128,46 @@ ol ul, ol ol, ul ol {
 button {
     font-size: 16px;
     padding: 12px;
-    border: 1px solid #fff;
-    border-radius: 8px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
     background: var(--button-background-color);
     color: var(--button-text-color);
-    transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
+    width: 100%;
 }
 
-button:active {
-    transform: scale(0.96);
-    background: var(--button-hover-color);
+.input-wrapper-group label {
+    color: var(--text-primary-color);
+    font-weight: bold;
+}
+
+.input-wrapper-group {
+    padding-bottom: 20px;
+}
+
+.input-wrapper-group button {
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .input-wrapper {
-    border: 1px solid var(--border-outline-color);
+    margin-top: 0.6rem;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    padding: 20px;
-    padding-top: 14px;
+    padding: 6px 2px;
     background-color: var(--body-secondary-color);
     display: flex;
     width: 100%;
     flex-direction: column;
     box-sizing: border-box;
-    gap: 0.2em;
-}
-
-.input-wrapper label {
-    color: var(--primary-text-color);
-    font-size: 1.05em;
 }
 
 .input-wrapper input {
-    border: 1px solid var(--border-outline-color);
+    color: var(--text-primary-color);
+    border: none;
     border-radius: 8px;
     background: var(--body-secondary-color);
-    color: var(--primary-text-color);
     padding: 0.6em 0.8em;
     outline: none;
     font-size: 1em;
@@ -166,37 +175,13 @@ button:active {
 }
 
 .input-wrapper input::placeholder {
-    color: var(--secondary-text-color);
+    color: var(--text-secondary-color);
 }
 
-.input-wrapper input:focus {
-    background-color: var(--element-hover-background-color);
-}
-
-.input-wrapper button {
-    margin-top: 20px;
+.input-wrapper:focus-within {
+    outline: 2px solid #4f77ac;
 }
 
 .colored::first-letter {
     color: var(--accent-color);
-}
-
-.current-endpoint {
-    color: #45A557;
-}
-
-.primary-text-color {
-    color: var(--primary-text-color);
-}
-
-.navigation {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 2px;
-}
-
-.navigation p {
-    margin: 0;
 }
