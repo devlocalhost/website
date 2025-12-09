@@ -7,7 +7,11 @@
 {% block content %}
 
     <div class="navigation">
-        <span><a href="/">Index</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.endpoint }}">Status</a> <span class="primary-text-color">&gt;</span> <a href="{{ request.full_url }}" class="current-endpoint">All websites</a></span>
+        <span><a href="/">Index</a></span>
+        <span class="primary-text-color">&gt;</span>
+        <span><a href="{{ request.endpoint }}">Status</a></span>
+        <span class="primary-text-color">&gt;</span>
+        <span><a href="{{ request.full_url }}" class="current-endpoint">All websites</a></span>
     </div>
 
     <h1 class="colored">Status for all the websites</h1>
