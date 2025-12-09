@@ -37,20 +37,6 @@
         color: #fdcc4b;
     }
 
-    .navigation {
-        display: flex;
-        overflow: hidden;
-        align-items: center;
-    }
-
-    .navigation .current-endpoint {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
 </style>
 
 {% endblock %}
@@ -61,7 +47,7 @@
 
 {% block navigation_inner %}
 
-    <div class="navigation">
+    <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.endpoint }}">Lyrics</a></span>
