@@ -38,25 +38,53 @@
     --button-text-color: var(--text-primary-color);
 }
 
+/* body { */
+/*     font-family: sans-serif; */
+/*     font-display: block; */
+/*     font-size: 17px; */
+/*     color: var(--text-primary-color); */
+/*     background-color: var(--body-background-color); */
+/*     margin: 1em auto; */
+/*     margin-top: 0; */
+/*     max-width: 40em; */
+/*     line-height: 1.62; */
+/*     padding: 0 1.40em 3.64em; */
+/*     overflow-wrap: break-word; */
+/* } */
+
+
+
+
+
 body {
     font-family: sans-serif;
     font-display: block;
     font-size: 17px;
     color: var(--text-primary-color);
     background-color: var(--body-background-color);
-    margin: 1em auto;
-    max-width: 40em;
     line-height: 1.62;
-    padding: 0 1.40em 3.64em;
     overflow-wrap: break-word;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    max-width: 40em;
+    margin: 1em auto 0;
+    padding: 0 1.40em 3.64em;
 }
 
 .navigation {
     background-color: #38383b;
-    border-radius: 12px;
-    padding: 10px;
+    padding: 14px 0;
+}
+
+.navigation-inner {
+    max-width: 38em;
+    margin: 0 auto;
     display: flex;
     gap: 4px;
+    justify-content: flex-start;
 }
 
 .navigation span.last-itm {

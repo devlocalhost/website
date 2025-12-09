@@ -4,15 +4,19 @@
     status of websites - dev64&#39;s website
 {% endblock %}
 
-{% block content %}
+{% block navigation_inner %}
 
-    <div class="navigation">
+    <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.endpoint }}">Status</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.full_url }}" class="current-endpoint">All websites</a></span>
     </div>
+    
+{% endblock %}
+
+{% block content %}
 
     <h1 class="colored">Status for all the websites</h1>
     <p>A route where I (and anyone else) can see the status of my websites: laurel_updates, pylyrical, shl, teleoasth, and trackard.</p>

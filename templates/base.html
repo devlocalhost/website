@@ -12,6 +12,11 @@
     </head>
 
     <body>
+        <div class="navigation">
+            {% block navigation_inner %}
+            {% endblock %}
+        </div>
+        
         <div class="content">
             {% block content %}
             {% endblock %}

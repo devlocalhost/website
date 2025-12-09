@@ -18,15 +18,19 @@
 
 {% endblock %}
 
-{% block content %}
+{% block navigation_inner %}
 
-    <div class="navigation">
+    <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="/blog">Blog</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.full_url }}" class="current-endpoint">{{ blog_title }}</a></span>
     </div>
+    
+{% endblock %}
+
+{% block content %}
 
     <h1 class="colored">{{ blog_title }}</h1>
 

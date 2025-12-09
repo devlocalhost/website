@@ -54,13 +54,17 @@
     </style>
 {% endblock %}
 
-{% block content %}
+{% block navigation_inner %}
 
-    <div class="navigation">
+    <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
         <span><a href="{{ request.full_url }}" class="current-endpoint">!?!?</a></span>
     </div>
+    
+{% endblock %}
+
+{% block content %}
 
     <h1 class="colo_red">dev64...?</h1>
 
