@@ -37,6 +37,19 @@
         color: #fdcc4b;
     }
 
+    .navigation-inner {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .navigation-inner > span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
+
 </style>
 
 {% endblock %}
