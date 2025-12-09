@@ -38,24 +38,6 @@
     --button-text-color: var(--text-primary-color);
 }
 
-/* body { */
-/*     font-family: sans-serif; */
-/*     font-display: block; */
-/*     font-size: 17px; */
-/*     color: var(--text-primary-color); */
-/*     background-color: var(--body-background-color); */
-/*     margin: 1em auto; */
-/*     margin-top: 0; */
-/*     max-width: 40em; */
-/*     line-height: 1.62; */
-/*     padding: 0 1.40em 3.64em; */
-/*     overflow-wrap: break-word; */
-/* } */
-
-
-
-
-
 body {
     font-family: sans-serif;
     font-display: block;
@@ -106,7 +88,7 @@ body {
 }
 
 hr {
-    border: 1px var(--border-outline-color) solid;
+    border: 1px #9f9f9f solid;
 }
 
 h1, h2, h3, h4, h5, h6 {
