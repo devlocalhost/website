@@ -7,7 +7,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="/static/css/style.css" />
+        <script>
+            var savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.write('<link id="themeStyle" rel="stylesheet" href="/static/css/light.css">');
+            } else {
+                document.write('<link id="themeStyle" rel="stylesheet" href="/static/css/dark.css">');
+            }
+        </script>
+
+        <link rel="stylesheet" href="/static/css/style.css">
+
         {% endblock %}
     </head>
 
@@ -26,4 +36,5 @@
     <!-- 100% privacy-first analytics -->
     <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
+    <script src="/static/js/theme.js"></script>
 </html>

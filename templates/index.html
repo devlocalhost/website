@@ -4,21 +4,11 @@
     index - dev64&#39;s website
 {% endblock %}
 
-{% block head %}
-{{ super() }}
-
-<style>
-    .old-index {
-        color: #E5484D;
-    }
-</style>
-
-{% endblock %}
-
 {% block navigation_inner %}
 
     <div class="navigation-inner">
         <span><a href="/">Index</a></span>
+        <span class="last-itm"><a href="#" id="themeToggle">Toggle theme</a></span>
     </div>
     
 {% endblock %}

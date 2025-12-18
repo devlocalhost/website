@@ -28,18 +28,6 @@
     font-style: italic;
 }
 
-:root {
-    --accent-color: #3584e4;
-    --anchor-color: #81d0ff;
-    --body-background-color: #222226;
-    --body-secondary-color: #333337;
-    --text-primary-color: #ffffff;
-    --text-secondary-color: #a3a3a5;
-    --border-outline-color: #454545;
-    --button-background-color: var(--accent-color);
-    --button-text-color: var(--text-primary-color);
-}
-
 body {
     font-family: "InterVariable", "Inter";
     font-variant-alternates:
@@ -48,7 +36,7 @@ body {
     /* font-display: block; */
     font-size: 18px;
     color: var(--text-primary-color);
-    background-color: var(--body-background-color);
+    background-color: var(--body-primary-color);
     line-height: 1.62;
     overflow-wrap: break-word;
     margin: 0;
@@ -63,7 +51,7 @@ body {
 }
 
 .navigation {
-    background-color: #38383b;
+    background-color: var(--navigation-background-color);
     padding: 14px 0;
 }
 
