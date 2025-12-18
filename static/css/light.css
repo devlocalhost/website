@@ -1,0 +1,24 @@
+:root {
+    --accent-color: #3584e4;
+    --anchor-color: #357fca;
+    --body-primary-color: #fafafb;
+    --body-secondary-color: #fff;
+    --text-primary-color: #323237;
+    --text-secondary-color: #a3a3a5;
+    --navigation-background-color: #ebebed;
+    --border-outline-color: #454545;
+    --button-background-color: var(--accent-color);
+    --button-text-color: #fff;
+}
+
+a:hover {
+    color: #0461be;
+}
+
+.navigation {
+    border: 1px solid #dadadc;
+}
+
+.blog_details {
+    color: #8c8c8f;
+}
