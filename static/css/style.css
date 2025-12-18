@@ -131,6 +131,10 @@ code {
     display: inline-block;
 }
 
+:is(h1, h2, h3, h4, h5, h6) + .code-block {
+    margin-top: 1em; /* fixes padding/margin issue caused by header tags... */
+}
+
 a {
     color: var(--anchor-color);
     transition: color 0.3s ease;
