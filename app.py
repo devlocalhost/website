@@ -300,6 +300,7 @@ def blog_post(blog_name):
         "blog_template.html",
         blog_title=blog_title,
         blog_data=blog_data,
+        blog_file=blog_file,
         date_created=date_created,
         date_last_modified=date_last_modified,
     )
