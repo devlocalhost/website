@@ -1,5 +1,5 @@
 # About Me
-Hello there, I'm dev64. A (2005 - {current_year}) programmer, Linux user, Applications and Networks Technician student. I was born in Greece, Thessaloniki, and I also live there. I finished Vocational High School, and now I am doing an internship. I have no future plans yet, but I plan to get into Android app development.
+Hello there, I'm dev64. A (2005 - {[current_year](/blog/current_year)}) programmer, Linux user, Applications and Networks Technician student. I was born in Greece, Thessaloniki, and I also live there. I finished Vocational High School, and now I am doing an internship. I have no future plans yet, but I plan to get into Android app development.
 
 ## Skills
 1. Python
