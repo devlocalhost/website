@@ -1,28 +1,30 @@
+@import url("https://rsms.me/inter/inter.css");
+
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
+    src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
+    src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Bold-Italic.woff2') format('woff2');
-    font-weight: 700;
+    src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
+    font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
-    font-weight: 400;
+    src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
     font-style: italic;
 }
 
@@ -39,15 +41,18 @@
 }
 
 body {
-    font-family: sans-serif;
-    font-display: block;
-    font-size: 17px;
+    font-family: "InterVariable", "Inter";
+    font-variant-alternates:
+        character-variant(alt-1, uc-g-with-spur)
+        styleset(open-digits, disambiguation);
+    /* font-display: block; */
+    font-size: 18px;
     color: var(--text-primary-color);
     background-color: var(--body-background-color);
     line-height: 1.62;
     overflow-wrap: break-word;
     margin: 0;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     padding: 0;
 }
 
@@ -95,8 +100,12 @@ hr {
 h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary-color);
     line-height: 1.2;
-    margin-bottom: 0.4em;
-    margin-top: 0.4em;
+    margin-top: 1.08em;
+    margin-bottom: -0.26em;
+}
+
+.content > :is(h1, h2, h3, h4, h5, h6):first-child {
+    margin-top: 0;
 }
 
 code,
