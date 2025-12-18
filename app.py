@@ -213,6 +213,16 @@ def status():
     )
 
 
+@app.route("/whatismyip")
+def whatismyip():
+    remote_addr = request.headers.get("CF-Connecting-IP")
+
+    if not remote_addr:
+        remote_addr = request.headers.get("X-Forwarded-For", request.remote_addr)
+
+    return str(remote_addr) + "\n"
+
+
 # @app.route("/sj")
 # def status_json():
 #     return status.get_status("website")
