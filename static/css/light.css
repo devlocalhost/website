@@ -23,3 +23,21 @@ a:hover {
 .blog_details {
     color: #6f6f6f;
 }
+
+/* for lyrics result */
+.yellow::first-letter {
+    color: #FFBE6F;
+}
+
+/* spaghetti code yeah */
+.lyrics-res-container {
+    margin-top: -1em;
+}
+
+.lyrics-res-container, .lyrics-res-container h1, h2 {
+    color: #fff !important;
+}
+
+.lyrics-res-container a:hover {
+    color: var(--anchor-color);
+}
