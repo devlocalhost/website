@@ -9,6 +9,7 @@
     --border-outline-color: #454545;
     --button-background-color: var(--accent-color);
     --button-text-color: var(--text-primary-color);
+    --input-focus-color: #4f77ac;
 }
 
 .blog_details {

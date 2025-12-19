@@ -191,7 +191,7 @@ button {
 }
 
 .input-wrapper:focus-within {
-    outline: 2px solid #4f77ac;
+    outline: 2px solid var(--input-focus-color);
 }
 
 .colored::first-letter {
