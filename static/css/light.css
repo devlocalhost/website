@@ -34,7 +34,7 @@ a:hover {
     margin-top: -1em;
 }
 
-.lyrics-res-container, .lyrics-res-container h1, h2 {
+.lyrics-res-container, .lyrics-res-container h1, .lyrics-res-container h2 {
     color: #fff !important;
 }
 
