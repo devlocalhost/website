@@ -9,6 +9,7 @@
     --border-outline-color: #454545;
     --button-background-color: var(--accent-color);
     --button-text-color: #fff;
+    --input-focus-color: #81adfe;
 }
 
 a:hover {
