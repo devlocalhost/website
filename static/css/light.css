@@ -29,9 +29,8 @@ a:hover {
     color: #FFBE6F;
 }
 
-/* spaghetti code yeah */
-.lyrics-res-container {
-    margin-top: -1em;
+.lyrics-res-container a {
+    color: #81d0ff !important; /* it looks bad in light mode, in lyrics route */
 }
 
 .lyrics-res-container, .lyrics-res-container h1, .lyrics-res-container h2 {
