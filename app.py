@@ -76,6 +76,16 @@ def verify_signature(secret_token, signature_header, payload_body):
     return hmac.compare_digest(expected, signature_header)
 
 
+def valid_tco_url(link):
+    try:
+        url = urllib.parse.urlparse(link)
+        
+    except Exception:
+        return False
+
+    return url.hostname == "t.co"
+
+
 def get_uptime(seconds):
     intervals = (("week", 604800), ("day", 86400), ("hour", 3600), ("minute", 60))
     result = []
@@ -240,6 +250,49 @@ def home():
     )
 
     return render_template("index.html", blog_filename=blog_filename.split("/")[-1].replace(".md", ""), blog_title=blog_title, timestamp=timestamp)
+
+
+@app.route("/btco")
+def bypass_tco():
+    tco_link = request.args.get("tco_link")
+
+    if tco_link and valid_tco_url(tco_link):
+        resp = requests.get(
+            f"{os.environ['SCR_URL']}?url={tco_link}"
+        )
+
+        try:
+            response = resp.json()['html'].split("URL=")[1].split('">')[0] # wataheeeeeeeeeeeeel
+
+        except Exception:
+            response = resp.text
+
+        return render_template("btco_result.html", status_code=resp.json()['status_code'], response=response)
+
+    return render_template("btco.html")
+
+
+# @app.route("/lyrics")
+# def lyrics():
+#     search_query = request.args.get("search_query")
+
+#     if search_query:
+#         # bad
+#         data = requests.get(
+#             f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}"
+#         )
+
+#         try:
+#             data = data.json()
+
+#         except:
+#             data = data.text
+
+#         # bad
+
+#         return render_template("lyrics_result.html", data=data)
+
+#     return render_template("lyrics.html")
 
 
 @app.route("/testpage")

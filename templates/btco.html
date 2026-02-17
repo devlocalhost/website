@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    bypass t.co (twitter) links - dev64&#39;s website
+{% endblock %}
+
+{% block navigation_inner %}
+
+    <div class="navigation-inner">
+        <span><a href="/">Index</a></span>
+        <span class="primary-text-color">&gt;</span>
+        <span><a href="{{ request.full_url }}" class="current-endpoint">btco</a></span>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="colored">btco - Bypass t.co links</h1>
+    <p>Are you tired of going through t.co links? No? Ok.<br>Then do not enter a t.co link below...</p>
+
+    <form action="/btco" method="get">
+        <div class="input-wrapper-group">
+            <label for="tco_link">Enter t.co link</label>
+            <div class="input-wrapper">
+                <input type="url" id="tco_link" name="tco_link" placeholder="https://t.co/blablabla" required="">
+            </div>
+            <button type="submit">Bypass that shit</button>
+        </div>
+    </form>
+    
+
+{% endblock %}
