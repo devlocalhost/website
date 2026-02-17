@@ -1,6 +1,7 @@
 import os
 import re
 import hmac
+import glob
 import hashlib
 import datetime
 import platform
@@ -233,7 +234,15 @@ def home():
     if request.args.get("old") == "true":
         return render_template("index_old.html")
 
-    return render_template("index.html")
+    # the filename of the recent created/modified blog post
+    
+    blog_filename = max(glob.glob("blogs/*"), key=os.path.getctime)
+    blog_title = open(blog_filename).readline().replace("# ", "").replace(NEWLINE_CHAR, "")
+    timestamp = datetime.datetime.fromtimestamp(os.stat(blog_filename).st_mtime).strftime(
+        "%b %d"
+    )
+
+    return render_template("index.html", blog_filename=blog_filename.split("/")[-1].replace(".md", ""), blog_title=blog_title, timestamp=timestamp)
 
 
 @app.route("/testpage")
