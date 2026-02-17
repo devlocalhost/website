@@ -199,3 +199,7 @@ button {
 .colored::first-letter {
     color: var(--accent-color);
 }
+
+.red::first-letter {
+    color: #f04947;
+}
