@@ -215,6 +215,7 @@ def status():
 
 
 @app.route("/whatismyip")
+@app.route("/ip")
 def whatismyip():
     remote_addr = request.headers.get("CF-Connecting-IP")
 
@@ -231,11 +232,7 @@ def whatismyip():
 
 @app.route("/")
 def home():
-    if request.args.get("old") == "true":
-        return render_template("index_old.html")
-
     # the filename of the recent created/modified blog post
-    
     blog_filename = max(glob.glob("blogs/*"), key=os.path.getctime)
     blog_title = open(blog_filename).readline().replace("# ", "").replace(NEWLINE_CHAR, "")
     timestamp = datetime.datetime.fromtimestamp(os.stat(blog_filename).st_mtime).strftime(
