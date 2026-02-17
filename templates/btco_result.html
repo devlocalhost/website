@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    bypass t.co (twitter) links - dev64&#39;s website
+{% endblock %}
+
+{% block navigation_inner %}
+
+    <div class="navigation-inner">
+        <span><a href="/">Index</a></span>
+        <span class="primary-text-color">&gt;</span>
+        <span><a href="{{ request.path }}" class="current-endpoint">btco</a></span>
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+
+    {% if status_code == 200 %}
+        <h1 class="colored">btco - Bypass t.co links</h1>
+        <p>The link you entered redirects to...<br><a href="{{ response }}">{{ response }}</a></p>
+    {% else %}
+        <h1 class="red">btco - Bypass t.co links</h1>
+        <p>Yeah, I cannot bypass that shit. Twitter changed things maybe?</p>
+
+        <code class="code-block">{{ response }}</code>
+    {% endif %}
+    
+
+{% endblock %}
