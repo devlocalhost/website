@@ -16,8 +16,17 @@
 {% block content %}
 
     <h1 class="colored">dev64.</h1>
-    <p><span class="primary-text-color">A ({<a href="/blog/current_year">current_year</a>} - 2005) year old Python and Web (HTML &amp; CSS) developer/programmer.</span> For more de<a href="/t">t</a>ail<a href="/s">s</a>, check the whoami blog post by clicking <a href="/blog/whoami">here</a>.</p>
+    <p><span class="primary-text-color">A ({<a href="/blog/current_year">current_year</a>} - 2005) year old Python and Web (HTML &amp; CSS) developer/programmer.</span> Learn more about me in the <a href="/blog/whoami">whoami</a> blog post.</p>
 
-    <p>Want to see more? Click <a href="/blog">here</a> to see my blog posts, or <a href="/blog/sitemap">here</a> to see a sitemap of the website.</p>
+    <h2>Recent created/modified blog post:</h2>
+    <p><a href="/blog/{{ blog_filename }}">({{ blog_filename }}) {{ blog_title }}</a>, at {{ timestamp }}</p>
 
+    <h2>Quick links</h2>
+    <ul>
+        <li><a href="/blog">Blog posts</a></li>
+        <li><a href="/blog/sitemap">Sitemap</a></li>
+        <li><a href="/s">Status page</a></li>
+        <li><a href="/t">Test page</a></li>
+    </ul>
+    
 {% endblock %}
