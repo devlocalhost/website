@@ -1,7 +1,62 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{ super() }}
+
+<link id="themeStyle" rel="stylesheet" href="/static/css/dark.css">
+
+<style>
+    body {
+        background: url('{{ listen_data[1]["recenttracks"]["track"][0]["image"][-1]["#text"] }}') no-repeat center center fixed;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.8);
+        background-blend-mode: darken;
+    }
+
+    p, .navigation-top, code {
+        background-color: transparent !important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .code-block {
+        font-family: inherit;
+        font-size: 20px;
+        border-width: 0;
+        padding: 0;
+        color: var(--primary-text-color);
+        box-shadow: none;
+    }
+
+    @media (min-width: 768px) {
+        .navigation {
+            background-color: transparent !important;
+        }
+    }
+
+    .navigation-inner {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .navigation-inner > span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
+
+    .navigation {
+        border: none;
+    }
+
+</style>
+
+{% endblock %}
+
 {% block title %}
-    what is dev listening to - dev64&#39;s website
+    what is dev64 listening to - dev64&#39;s website
 {% endblock %}
 
 {% block navigation_inner %}
@@ -9,17 +64,18 @@
     <div class="navigation-inner">
         <span><a href="/">Index</a></span>
         <span class="primary-text-color">&gt;</span>
-        <span><a href="{{ request.full_url }}" class="current-endpoint">What is dev listening to?</a></span>
+        <span><a href="{{ request.full_url }}" class="current-endpoint">What is dev64 listening to?</a></span>
     </div>
     
 {% endblock %}
 
 {% block content %}
 
-    <h1 class="colored">What is dev listening to?</h1>
-
-    <p>He {{ "is" if listen_data[2] else "was" }} listening to <span class="primary-text-color" style="font-weight: bold;">{{ listen_data[0] }} by {{ listen_data[1] }}</span>. Source: {{ ('<a href="https://www.last.fm/user/dev64">Last.fm</a>' if service == "Last.fm" else ('<a href="https://listenbrainz.org/user/dev64/">ListenBrainz</a>' if service == "ListenBrainz" else 'Unknown')) | safe }}</p>
+    <h1 class="colored">What is dev64 listening to?</h1>
     
-    <p>Generate a image for this song using <a href="https://trackard.dev64.xyz/get?username=dev64&service={{ listen_data[4] }}&track_title_artist=&spotify_track_id=&cover_brightness=1.10&cover_blur_radius=30&cover_round_radius=30&container_transparency=30&container_round_radius=45&text_length_limit_title=28&text_length_limit_artist=28&text_length_limit_album=28">trackard</a>, or see lyrics using <a href="/lyrics?search_query={{ listen_data[0].replace(' ', '+') }}+{{ listen_data[1].replace(' ', '+') }}">pylyrical</a>.</p>
+    <h2>{{ listen_data[0][0] }} by {{ listen_data[0][1] }}</h2>
+    
+    <p>Listening now? {{ listen_data[0][2] }}<br>Source: {{ ('<a href="https://www.last.fm/user/dev64">Last.fm</a>' if service == "Last.fm" else ('<a href="https://listenbrainz.org/user/dev64/">ListenBrainz</a>' if service == "ListenBrainz" else 'Unknown')) | safe }}<br>Song page: <a href="{{ listen_data[1]['recenttracks']['track'][0]['url'] }}">Last.fm</a><br>For lyrics, visit <a href="/lyrics?search_query={{ listen_data[0][0].replace(' ', '+') }}+{{ listen_data[0][1].replace(' ', '+') }}">pylyrical</a></p>
+    <!-- !!! THIS WONT WORK IF LISTENBRAINZ GETS PICKED !!! -->
 
 {% endblock %}
