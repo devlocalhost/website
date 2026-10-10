@@ -187,6 +187,7 @@ def home():
 
 
 @app.route("/btco")
+@app.route("/t")
 def bypass_tco():
     tco_link = request.args.get("tco_link")
 
@@ -239,6 +240,7 @@ def widlt():
 
 
 @app.route("/blog")
+@app.route("/b")
 def blog():
     blogs = {}
 
@@ -253,6 +255,7 @@ def blog():
 
 
 @app.route("/blog/<blog_name>")
+@app.route("/b/<blog_name>")
 def blog_post(blog_name):
     blog_file = os.path.join("blogs", blog_name + ".md")
 
@@ -291,6 +294,7 @@ def blog_post(blog_name):
 
 
 @app.route("/lyrics")
+@app.route("/l")
 def lyrics():
     search_query = request.args.get("search_query")
 
