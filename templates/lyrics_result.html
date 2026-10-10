@@ -3,6 +3,8 @@
 {% block head %}
 {{ super() }}
 
+<link id="themeStyle" rel="stylesheet" href="/static/css/dark.css">
+
 <style>
     {% if data['status'] == 200 %}
         body {
@@ -45,6 +47,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
         min-width: 0;
+    }
+
+    .navigation {
+        border: none;
     }
 
 </style>
