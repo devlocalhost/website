@@ -66,13 +66,7 @@ def verify_signature(secret_token, signature_header, payload_body):
 
 
 def valid_tco_url(link):
-    try:
-        url = urllib.parse.urlparse(link)
-        
-    except Exception:
-        return False
-
-    return url.hostname == "t.co"
+    return urllib.parse.urlsplit(link) == "t.co"
 
 
 def get_uptime(seconds):
