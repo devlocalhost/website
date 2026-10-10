@@ -99,7 +99,7 @@ def get_uptime_since(timestamp):
 def lastfm_listen(username):
     resp = requests.get(
         f"{LASTFM_API_BASE_URL}/?api_key={LASTFM_API_KEY}&method=User.getrecenttracks&user={username}&format=json&limit=1",
-        timeout=15,
+        timeout=8,
     )
     data = resp.json()
 
@@ -111,7 +111,7 @@ def lastfm_listen(username):
     artist = data["recenttracks"]["track"][0]["artist"]["#text"]
     title = data["recenttracks"]["track"][0]["name"]
 
-    return (title, artist, nowplaying, "lastfm")
+    return ((title, artist, nowplaying, "lastfm"), data)
 
 
 def listenbrainz_listen(username):
@@ -128,7 +128,7 @@ def listenbrainz_listen(username):
     artist = data.artist_name
     title = data.track_name
 
-    return (title, artist, nowplaying, "listenbrainz")
+    return ((title, artist, nowplaying, "listenbrainz"), data)
 
 
 def custom_header_plugin(md):
@@ -218,7 +218,7 @@ def testpage():
 
 
 @app.route("/widlt")
-@app.route("/whatisdevlisteningto")
+@app.route("/whatisdev64listeningto")
 def widlt():
     username = "dev64"
 
@@ -228,7 +228,7 @@ def widlt():
     lastfm_data = lastfm_listen(username)
     listenbrainz_data = listenbrainz_listen(username)
 
-    if lastfm_data[2]:
+    if lastfm_data[0][2]: # now playing state
         service = "Last.fm"
         listen_data = lastfm_data
 
