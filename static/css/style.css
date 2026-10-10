@@ -1,10 +1,9 @@
-@import url("https://rsms.me/inter/inter.css");
-
 @font-face {
     font-family: 'JetBrains Mono';
     src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -12,6 +11,7 @@
     src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -19,6 +19,7 @@
     src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -26,14 +27,14 @@
     src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
+    font-display: swap;
 }
 
 body {
-    font-family: "InterVariable", "Inter";
+    font-family: "InterVariable", "Inter", sans-serif;
     font-variant-alternates:
         character-variant(alt-1, uc-g-with-spur)
         styleset(open-digits, disambiguation);
-    /* font-display: block; */
     font-size: 18px;
     color: var(--text-primary-color);
     background-color: var(--body-primary-color);
@@ -55,16 +56,14 @@ body {
     padding: 14px 0;
 }
 
-.navigation span.last-itm {
-    margin-left: auto;
-}
-
 .navigation-inner {
+    display: flex;
+    gap: 4px;
     max-width: 38em;
     margin: 0 auto;
-    gap: 4px;
-    display: flex;
+    padding: 0 24px;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 .navigation-inner > span:has(.current-endpoint) {
@@ -79,22 +78,22 @@ body {
     flex-shrink: 0;
 }
 
-.navigation > *:first-child { padding-left: 10px; }
-.navigation > *:last-child { padding-right: 10px; }
-
 @media (max-width: 768px) {
     .navigation {
         position: fixed;
         bottom: 0;
-        left: 0%;
-        right: 0%;
-        border-radius: 0;
-        padding: 20px;
+        left: 0;
+        right: 0;
+        padding: 20px 0;
+    }
+
+    body {
+        margin-bottom: 80px;
     }
 }
 
 hr {
-    border: 1px #9f9f9f solid;
+    border: 1px var(--hr-color, #9f9f9f) solid;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -104,15 +103,27 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: -0.26em;
 }
 
-/* the lyrics res part is a very hacky thing because */
-/* for some reason it doesnt want to pick it i dont know why */
-.content > :is(h1, h2, h3, h4, h5, h6):first-child, .lyrics-res-container h1 {
+.content :is(h1, h2, h3, h4, h5, h6):first-child {
     margin-top: 0;
+}
+
+a {
+    color: var(--anchor-color);
+    transition: color 0.3s ease;
+    overflow-wrap: anywhere;
+}
+
+li::marker {
+    color: var(--text-primary-color);
+}
+
+ol ul, ol ol, ul ol {
+    padding-left: 20px;
 }
 
 code,
 .code-block {
-    font-family: "JetBrains Mono";
+    font-family: "JetBrains Mono", monospace;
     font-size: 16px;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
     background-color: var(--body-secondary-color);
@@ -125,30 +136,18 @@ code {
 }
 
 .code-block {
-    word-break: break-word;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
     white-space: pre-wrap;
-    background-color: var(--body-secondary-color);
+    overflow-wrap: anywhere;
     padding: 12px 18px;
     border-radius: 12px;
-    display: inline-block;
 }
 
 :is(h1, h2, h3, h4, h5, h6) + .code-block {
-    margin-top: 1em; /* fixes padding/margin issue caused by header tags... */
-}
-
-a {
-    color: var(--anchor-color);
-    transition: color 0.3s ease;
-    word-break: break-word; /* possibly a bad choice? */
-}
-
-li::marker {
-    color: var(--text-primary-color);
-}
-
-ol ul, ol ol, ul ol {
-    padding-left: 20px;
+    margin-top: 1em;
 }
 
 button {
@@ -160,7 +159,10 @@ button {
     background: var(--button-background-color);
     color: var(--button-text-color);
     cursor: pointer;
-    width: 100%;
+}
+
+.input-wrapper-group {
+    padding-bottom: 20px;
 }
 
 .input-wrapper-group label {
@@ -168,11 +170,8 @@ button {
     font-weight: bold;
 }
 
-.input-wrapper-group {
-    padding-bottom: 20px;
-}
-
 .input-wrapper-group button {
+    width: 100%;
     margin-top: 20px;
     font-weight: bold;
 }
@@ -208,10 +207,20 @@ button {
     outline: 2px solid var(--input-focus-color);
 }
 
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--input-focus-color);
+    outline-offset: 2px;
+}
+
+.navigation a:focus-visible {
+    outline-offset: -2px;
+}
+
 .colored::first-letter {
     color: var(--accent-color);
 }
 
 .red::first-letter {
-    color: #f04947;
+    color: var(--red-color, #f04947);
 }
