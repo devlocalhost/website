@@ -55,30 +55,32 @@ body {
     padding: 14px 0;
 }
 
+.navigation span.last-itm {
+    margin-left: auto;
+}
+
 .navigation-inner {
     max-width: 38em;
     margin: 0 auto;
     gap: 4px;
     display: flex;
-    justify-content: flex-start;
+    white-space: nowrap;
 }
 
-.navigation span.last-itm {
+.navigation-inner > span:has(.current-endpoint) {
+    color: var(--anchor-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.last-itm {
     margin-left: auto;
+    flex-shrink: 0;
 }
 
 .navigation > *:first-child { padding-left: 10px; }
 .navigation > *:last-child { padding-right: 10px; }
-
-
-
-
-
-
-
-
-
-
 
 @media (max-width: 768px) {
     .navigation {
