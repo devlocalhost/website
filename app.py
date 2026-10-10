@@ -17,11 +17,6 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-# import status
-
-from nsysmon.plugins import cpuinfo
-from nsysmon.plugins import meminfo
-from nsysmon.plugins import loadavg
 
 load_dotenv()
 
@@ -30,12 +25,6 @@ app = Flask("-- website --")
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 
 APP_SECRET_TOKEN = os.environ["APP_SECRET_TOKEN"]
-COMMIT_HASH = subprocess.check_output(
-    'git log -1 --pretty=format:"%h"', shell=True, text=True
-)
-COMMIT_MESSAGE = subprocess.check_output(
-    f"git log -1 --pretty=format:%s {COMMIT_HASH}", shell=True, text=True
-)
 START_TIME_TIMESTAMP_UTC = int(
     datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC))
 )
@@ -172,58 +161,6 @@ def autod():
     return "", 403
 
 
-@app.route("/s")
-@app.route("/status")
-def status():
-    if request.args.get("all") == "true":
-        # TODO: find a way to handle the case when a website time outs or something
-        # TODO: maybe move this to a different route, like /manage?
-
-        websites = ["laurel-updates", "pylyrical", "shl", "teleoasth", "trackard"]
-        website_names = ["laurel_updates", "pylyrical_api", "shl", "teleoasth", "trackard"]
-        data = []
-
-        for index, name in enumerate(websites):
-            data.append([website_names[index], requests.get(f"https://{name}.dev64.xyz/sj", timeout=5).json()])
-
-
-        return render_template("status_websites.html", data=data)
-
-    time_now_timestamp = int(
-        datetime.datetime.timestamp(datetime.datetime.now(pytz.UTC))
-    )
-    # TIME_NOW_TIMESTAMP = datetime.datetime.now(pytz.UTC).strftime("%A, %B %d %Y - %I:%M:%S %p %Z")
-
-    start_time = datetime.datetime.fromtimestamp(START_TIME_TIMESTAMP_UTC).strftime(
-        "%A, %B %d %Y - %I:%M:%S %p"
-    )
-    time_now = datetime.datetime.fromtimestamp(time_now_timestamp).strftime(
-        "%A, %B %d %Y - %I:%M:%S %p"
-    )
-
-    uptime = get_uptime(time_now_timestamp - START_TIME_TIMESTAMP_UTC)
-
-    nsysmon_plugins_data = [
-        cpuinfo.Cpuinfo().get_data(),
-        meminfo.Meminfo().get_data(),
-        loadavg.Loadavg().get_data(),
-    ]
-
-    return render_template(
-        "status.html",
-        data=[
-            COMMIT_HASH,
-            COMMIT_MESSAGE,
-            PLATFORM,
-            start_time,
-            time_now,
-            uptime,
-            nsysmon_plugins_data,
-            WEBSITE_MODE,
-        ],
-    )
-
-
 @app.route("/whatismyip")
 @app.route("/ip")
 def whatismyip():
@@ -233,11 +170,6 @@ def whatismyip():
         remote_addr = request.headers.get("X-Forwarded-For", request.remote_addr)
 
     return str(remote_addr) + "\n"
-
-
-# @app.route("/sj")
-# def status_json():
-#     return status.get_status("website")
 
 
 @app.route("/")
@@ -270,29 +202,6 @@ def bypass_tco():
         return render_template("btco_result.html", status_code=resp.json()['status_code'], response=response)
 
     return render_template("btco.html")
-
-
-# @app.route("/lyrics")
-# def lyrics():
-#     search_query = request.args.get("search_query")
-
-#     if search_query:
-#         # bad
-#         data = requests.get(
-#             f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}"
-#         )
-
-#         try:
-#             data = data.json()
-
-#         except:
-#             data = data.text
-
-#         # bad
-
-#         return render_template("lyrics_result.html", data=data)
-
-#     return render_template("lyrics.html")
 
 
 @app.route("/testpage")
