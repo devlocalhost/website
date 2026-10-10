@@ -170,12 +170,20 @@ def whatismyip():
 def home():
     # the filename of the recent created/modified blog post
     blog_filename = max(glob.glob("blogs/*"), key=os.path.getctime)
-    blog_title = open(blog_filename).readline().replace("# ", "").replace(NEWLINE_CHAR, "")
-    timestamp = datetime.datetime.fromtimestamp(os.stat(blog_filename).st_mtime).strftime(
-        "%b %d"
-    )
 
-    return render_template("index.html", blog_filename=blog_filename.split("/")[-1].replace(".md", ""), blog_title=blog_title, timestamp=timestamp)
+    with open(blog_filename) as blog_f:
+        blog_title = blog_f.readline().replace("# ", "").replace(NEWLINE_CHAR, "")
+
+    timestamp = datetime.datetime.fromtimestamp(
+        os.stat(blog_filename).st_mtime
+    ).strftime("%b %d")
+
+    return render_template(
+        "index.html",
+        blog_filename=blog_filename.split("/")[-1].replace(".md", ""),
+        blog_title=blog_title,
+        timestamp=timestamp,
+    )
 
 
 @app.route("/btco")
@@ -183,17 +191,21 @@ def bypass_tco():
     tco_link = request.args.get("tco_link")
 
     if tco_link and valid_tco_url(tco_link):
-        resp = requests.get(
-            f"{os.environ['SCR_URL']}?url={tco_link}"
-        )
+        resp = requests.get(f"{os.environ['SCR_URL']}?url={tco_link}", timeout=8)
 
         try:
-            response = resp.json()['html'].split("URL=")[1].split('">')[0] # wataheeeeeeeeeeeeel
+            response = (
+                resp.json()["html"].split("URL=")[1].split('">')[0]
+            )  # wataheeeeeeeeeeeeel
 
         except Exception:
             response = resp.text
 
-        return render_template("btco_result.html", status_code=resp.json()['status_code'], response=response)
+        return render_template(
+            "btco_result.html",
+            status_code=resp.json()["status_code"],
+            response=response,
+        )
 
     return render_template("btco.html")
 
@@ -285,13 +297,14 @@ def lyrics():
     if search_query:
         # bad
         data = requests.get(
-            f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}"
+            f"https://pylyrical.dev64.xyz/lyrics?q={urllib.parse.quote_plus(search_query)}",
+            timeout=8,
         )
 
         try:
             data = data.json()
 
-        except:
+        except Exception:
             data = data.text
 
         # bad
