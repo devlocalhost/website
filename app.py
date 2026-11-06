@@ -14,7 +14,7 @@ import mistune
 import pylistenbrainz
 
 from dotenv import load_dotenv
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 
@@ -323,4 +323,9 @@ def lyrics():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("404.html")
+    return render_template("404.html"), 404
+
+
+@app.route("/robots.txt")
+def fuckoff():
+    return "User-agent: *\nDisallow: /\n", 200, {"Content-Type": "text/plain"}
