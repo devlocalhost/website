@@ -229,15 +229,15 @@ def widlt():
     service = None
 
     lastfm_data = lastfm_listen(username)
-    listenbrainz_data = listenbrainz_listen(username)
+    # listenbrainz_data = listenbrainz_listen(username)
 
-    if lastfm_data[0][2]: # now playing state
-        service = "Last.fm"
-        listen_data = lastfm_data
+    # if lastfm_data[0][2]: # now playing state
+    service = "Last.fm"
+    listen_data = lastfm_data
 
-    else:
-        service = "ListenBrainz"
-        listen_data = listenbrainz_data
+    # else:
+        # service = "ListenBrainz"
+        # listen_data = listenbrainz_data
 
     return render_template("widlt.html", listen_data=listen_data, service=service)
 
