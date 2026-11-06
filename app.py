@@ -44,6 +44,9 @@ class CustomRenderer(mistune.HTMLRenderer):
         header_id = re.sub(r"\s+", "-", text.lower())
         return f'<h{level}>{text}</h{level}><div id="{header_id}"></div>'
 
+    def block_code(self, text, info=None):
+        return f'<code class="code-block">{text}</code>'
+
 
 if WEBSITE_MODE == "debug":
     print("[WEBSITE] DEBUG = True")
@@ -136,7 +139,7 @@ def custom_header_plugin(md):
 
 
 markdown_parser = mistune.create_markdown(
-    plugins=[custom_header_plugin, "strikethrough"]
+    plugins=[custom_header_plugin, "strikethrough", "table"]
 )
 
 app.jinja_env.globals.update(get_uptime=get_uptime, get_uptime_since=get_uptime_since)
