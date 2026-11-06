@@ -38,6 +38,6 @@
 
     <hr>
 
-    <span class="blog_details"><p>Created: {{ date_created }}<br>Last edit: {{ date_last_modified }}<br><a href="https://github.com/devlocalhost/website/commits/master/blogs/{{ request.path.split('/')[-1] }}.md">View edit history</a></p></span>
+    <span class="blog_details"><p>Created: {{ date_created }}<br>Last edit: {{ date_last_modified }}<br><a href="https://github.com/devlocalhost/website/commits/master/blogs/{{ request.path.split('/')[-1] }}.md">View edit history</a><br><a href="#">Go to the top</a><br><span class="copy-link-btn" onclick="navigator.clipboard.writeText(window.location.href); alert(`Copied to clipboard: ${window.location.href}`)">Copy link</span></p></span>
 
 {% endblock %}
