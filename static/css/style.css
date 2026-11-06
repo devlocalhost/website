@@ -121,6 +121,31 @@ ol ul, ol ol, ul ol {
     padding-left: 20px;
 }
 
+img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    font-size: 14px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    border-top: 2px solid var(--text-primary-color);
+    border-left: 2px solid var(--text-primary-color);
+}
+
+thead th {
+    border-top: none;
+}
+th:first-child, td:first-child {
+    border-left: none;
+}
+
 code,
 .code-block {
     font-family: "JetBrains Mono", monospace;
@@ -136,9 +161,7 @@ code {
 }
 
 .code-block {
-    display: block;
-    width: fit-content;
-    max-width: 100%;
+    width: 100%;
     box-sizing: border-box;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
@@ -211,6 +234,12 @@ a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--input-focus-color);
     outline-offset: 2px;
+}
+
+.copy-link-btn {
+    color: var(--anchor-color);
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .navigation a:focus-visible {
